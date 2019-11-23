@@ -14,5 +14,7 @@ web-report/
 .DS_Store
 
 # added by OV
+.idea
+.idea/workspace.xml
 .idea/*
 .old/*

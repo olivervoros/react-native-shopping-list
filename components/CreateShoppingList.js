@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {TextInput, View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import {capitaliseString, getShoppingListItemsArray} from "../Helper";
 
 export default class CreateShoppingList extends Component {
 
@@ -10,23 +9,21 @@ export default class CreateShoppingList extends Component {
 
     render() {
 
-        const shoppingListItems = getShoppingListItemsArray();
-        const shoppingItems = Object.keys(shoppingListItems).map(key =>
-            <View key={key}><TextInput style={styles.createShoppingListTextInput} placeholder={capitaliseString(shoppingListItems[key])} name={shoppingListItems[key]} /></View>
-        )
-
-        const { backToMain, createShoppingList, handleCreateShoppingListChange } = this.props;
+        const { backToMain, createShoppingList} = this.props;
 
         return(
             <View style={styles.container}>
                 <Text style={styles.title}>Create New Shopping List</Text>
                 <View style={{ marginBottom:25 }}>
-                <TextInput placeholder="Title" style={styles.createShoppingListTextInput} onChangeText={(text) => this.title = text} name="title" />
-                <TextInput placeholder="Author" style={styles.createShoppingListTextInput} onChangeText={handleCreateShoppingListChange} name="author" />
-                <TextInput placeholder="Date (dd/mm/yyyy)" style={styles.createShoppingListTextInput} onChangeText={handleCreateShoppingListChange} name="date" />
-                { shoppingItems }
+                <TextInput placeholder="Title" style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" />
+                <TextInput placeholder="Author" style={styles.createShoppingListTextInput}  onChangeText={(author) => this.setState({author : author})} name="author" />
+                <TextInput placeholder="Date (dd/mm/yyyy)" style={styles.createShoppingListTextInput} onChangeText={(date) => this.setState({date : date})} name="date" />
+                <TextInput placeholder="Milk" style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" />
+                <TextInput placeholder="Eggs" style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" />
+                <TextInput placeholder="Water" style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" />
+                <TextInput placeholder="Apples" style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" />
                 </View>
-                <TouchableOpacity onPress={createShoppingList}><Text style={styles.addShoppingListButtonView2}>Create Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => createShoppingList(this.state)}><Text style={styles.addShoppingListButtonView2}>Create Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView3}>Back to Home</Text></TouchableOpacity>
             </View>
 
