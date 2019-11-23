@@ -8,11 +8,9 @@ export default class ViewShoppingList extends Component {
         super(props);
     }
 
-    updateShoppingList = () => {}
-
     render() {
 
-        const { shoppingLists, presentShoppingListID, backToMain, deleteShoppingList } = this.props;
+        const { shoppingLists, presentShoppingListID, backToMain, loadShoppingListForm, deleteShoppingList } = this.props;
 
         const shoppingListItem = shoppingLists.find(item => item.id === presentShoppingListID);
 
@@ -27,7 +25,7 @@ export default class ViewShoppingList extends Component {
                 <Text style={styles.viewShoppingListText}>Date: (dd/mm/yyyy): { convertJSToUserDate(shoppingListItem.date) }</Text>
                 { shoppingItems }
                 <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>
-                <TouchableOpacity onPress={this.updateShoppingList}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => loadShoppingListForm(shoppingListItem.id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => deleteShoppingList(shoppingListItem.id)}><Text style={styles.addShoppingListButtonView3}>Delete Shopping List</Text></TouchableOpacity>
             </View>
 

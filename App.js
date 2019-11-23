@@ -4,6 +4,7 @@ import { getDummyShoppingList } from './Helper';
 import CreateShoppingList from './components/CreateShoppingList';
 import LoginForm from './components/LoginForm';
 import ViewShoppingList from "./components/ViewShoppingList";
+import UpdateShoppingList from "./components/UpdateShoppingList";
 
 export default class App extends Component {
 
@@ -37,8 +38,12 @@ export default class App extends Component {
         this.setState({ presentShoppingListID: id });
     }
 
+    loadShoppingListForm = (id) => {
+        this.setState({ displayCreateForm: false, presentShoppingListID: -1, updateShoppingListID: id });
+    }
+
     backToMain = () => {
-        this.setState({ displayCreateForm: false, presentShoppingListID: -1 });
+        this.setState({ displayCreateForm: false, presentShoppingListID: -1, updateShoppingListID: -1 });
     }
 
     createShoppingList = (args = {}) => {
@@ -62,6 +67,32 @@ export default class App extends Component {
 
     }
 
+    updateShoppingList = (updateShoppingListID, shoppingListItem, args) => {
+
+        let title = (args && args.title) ? args.title : shoppingListItem.title;
+        let author =  (args && args.author) ? args.author : shoppingListItem.author;
+        let userDate =  (args && args.date) ? args.date : shoppingListItem.date;
+        let milk =  (args && args.milk) ? args.milk : shoppingListItem.items.milk.toString();
+        let eggs =  (args && args.eggs) ? args.eggs : shoppingListItem.items.eggs.toString();
+        let water =  (args && args.water) ? args.water : shoppingListItem.items.water.toString();
+        let apples =  (args && args.apples) ? args.apples : shoppingListItem.items.apples.toString();
+        let items = {'milk': milk, 'eggs': eggs, 'water': water, 'apples': apples};
+
+        const objIndex = this.state.shoppingLists.findIndex((obj => parseInt(obj.id) === updateShoppingListID));
+
+        this.setState((state) => {
+            state.shoppingLists[objIndex] = {id: updateShoppingListID, title: title, author: author, date: userDate, items: items};
+        });
+
+        this.setState({
+            displayCreateForm: false,
+            presentShoppingListID: -1,
+            updateShoppingListID: -1
+        });
+
+
+    }
+
     deleteShoppingList = (deletedId) => {
         const filteredShoppingList = this.state.shoppingLists.filter((value, index, arr) => {
 
@@ -82,7 +113,11 @@ export default class App extends Component {
         }
 
         if( this.state.presentShoppingListID > 0 ) {
-            return <ViewShoppingList backToMain={this.backToMain} deleteShoppingList={this.deleteShoppingList} shoppingLists={this.state.shoppingLists} presentShoppingListID={this.state.presentShoppingListID}></ViewShoppingList>
+            return <ViewShoppingList backToMain={this.backToMain} loadShoppingListForm={this.loadShoppingListForm} deleteShoppingList={this.deleteShoppingList} shoppingLists={this.state.shoppingLists} presentShoppingListID={this.state.presentShoppingListID}></ViewShoppingList>
+        }
+
+        if (this.state.updateShoppingListID > 0) {
+            return <UpdateShoppingList backToMain={this.backToMain} updateShoppingList={this.updateShoppingList} shoppingLists={this.state.shoppingLists} updateShoppingListID={this.state.updateShoppingListID}></UpdateShoppingList>
         }
 
         if(this.state.displayCreateForm) {
