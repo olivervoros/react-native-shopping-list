@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View, Button } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { getDummyShoppingList } from './Helper';
 import CreateShoppingList from './components/CreateShoppingList';
 import LoginForm from './components/LoginForm';
@@ -47,7 +47,7 @@ export default class App extends Component {
     }
 
     createShoppingList = (args = {}) => {
-        let id = 999;
+        let id = Math.random() * 10000;
         let title = args.title;
         let author = args.author;
         let userDate = args.date;
@@ -129,21 +129,23 @@ export default class App extends Component {
         const logoutButton = <TouchableOpacity onPress={this.logout}><Text style={styles.addShoppingListButtonText}>LOGOUT</Text></TouchableOpacity>;
 
         return (
+            <ScrollView>
             <View style={styles.container}>
                 <Text style={styles.title}>SancusLabs Shopping List App</Text>
                 <TouchableOpacity style={styles.addShoppingListButtonView} onPress={this.loadCreateForm}>
-                    <Text style={styles.addShoppingListButtonText}>NEW SHOPPING LIST +</Text>
+                    <Text style={styles.addShoppingListButtonText}>CREATE NEW SHOPPING LIST</Text>
                 </TouchableOpacity>
                 <View style={styles.loginButtonView}>
                     {this.state.loggedIn ? logoutButton : loginButton}
                 </View>
                 <Text style={styles.title}>View Shopping Lists:</Text>
                 {this.state.shoppingLists.map((shoppingList, i) =>
-                    <TouchableOpacity key={shoppingList.id} onPress={() => this.viewShoppingListItem(shoppingList.id)} value="test">
+                    <TouchableOpacity key={shoppingList.id} onPress={() => this.viewShoppingListItem(shoppingList.id)}>
                         <Text style={styles.shoppingListItem} key={shoppingList.id}>{shoppingList.title}</Text>
                     </TouchableOpacity>
                 )}
             </View>
+            </ScrollView>
         );
     }
 }
@@ -154,6 +156,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 50
     },
     title: {
         fontSize: 26,
@@ -166,7 +169,9 @@ const styles = StyleSheet.create({
         margin: 10,
         width: 300,
         height: 50,
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 16
     },
     addShoppingListButtonView: {
         width:300,
@@ -175,9 +180,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#3fa9a1',
         padding: 10,
         color: '#fff',
+        textAlign: 'center'
     },
     addShoppingListButtonText: {
         color: '#fff',
+        textAlign: 'center',
+        paddingTop: 5,
+        fontWeight: "bold",
+        fontSize: 16,
     },
     loginButtonView: {
         width:300,
@@ -186,5 +196,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#312784',
         padding: 10,
         color: '#fff',
+        textAlign: 'center'
     }
 });

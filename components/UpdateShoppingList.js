@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, TextInput} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, TextInput, ScrollView} from 'react-native';
 
 export default class UpdateShoppingList extends Component {
 
@@ -14,20 +14,22 @@ export default class UpdateShoppingList extends Component {
         const shoppingListItem = shoppingLists.find(item => item.id === updateShoppingListID);
 
         return(
-        <View style={styles.container}>
-            <Text style={styles.title}>Update Shopping List</Text>
-            <View style={{ marginBottom:25 }}>
-                <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" defaultValue={shoppingListItem.title}/>
-                <TextInput style={styles.createShoppingListTextInput} onChangeText={(author) => this.setState({author : author})} name="author" defaultValue={shoppingListItem.author} />
-                <TextInput style={styles.createShoppingListTextInput} onChangeText={(date) => this.setState({date : date})} name="date" defaultValue={shoppingListItem.date} />
-                <TextInput style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" defaultValue={shoppingListItem.items['milk'].toString()} />
-                <TextInput style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" defaultValue={shoppingListItem.items['eggs'].toString()} />
-                <TextInput style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" defaultValue={shoppingListItem.items['water'].toString()} />
-                <TextInput style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" defaultValue={shoppingListItem.items['apples'].toString()} />
+            <ScrollView>
+            <View style={styles.container}>
+                <Text style={styles.title}>Update Shopping List</Text>
+                <View style={{ marginBottom:25 }}>
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" defaultValue={shoppingListItem.title}/>
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(author) => this.setState({author : author})} name="author" defaultValue={shoppingListItem.author} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(date) => this.setState({date : date})} name="date" defaultValue={shoppingListItem.date} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" defaultValue={shoppingListItem.items['milk'].toString()} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" defaultValue={shoppingListItem.items['eggs'].toString()} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" defaultValue={shoppingListItem.items['water'].toString()} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" defaultValue={shoppingListItem.items['apples'].toString()} />
+                </View>
+                <TouchableOpacity onPress={() => updateShoppingList(updateShoppingListID, shoppingListItem, this.state)}><Text style={styles.addShoppingListButtonView2}>UPDATE Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView3}>Back to Home</Text></TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => updateShoppingList(updateShoppingListID, shoppingListItem, this.state)}><Text style={styles.addShoppingListButtonView2}>UPDATE Shopping List</Text></TouchableOpacity>
-            <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView3}>Back to Home</Text></TouchableOpacity>
-        </View>
+            </ScrollView>
         )
     }
 }

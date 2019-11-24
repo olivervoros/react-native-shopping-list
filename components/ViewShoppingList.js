@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import { convertJSToUserDate, capitaliseString } from "../Helper";
 
 export default class ViewShoppingList extends Component {
@@ -19,6 +19,7 @@ export default class ViewShoppingList extends Component {
         )
 
         return(
+            <ScrollView>
             <View style={styles.container}>
                 <Text style={styles.title}>{ shoppingListItem.title }</Text>
                 <Text style={styles.viewShoppingListText}>Author: { shoppingListItem.author }</Text>
@@ -28,6 +29,7 @@ export default class ViewShoppingList extends Component {
                 <TouchableOpacity onPress={() => loadShoppingListForm(shoppingListItem.id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => deleteShoppingList(shoppingListItem.id)}><Text style={styles.addShoppingListButtonView3}>Delete Shopping List</Text></TouchableOpacity>
             </View>
+            </ScrollView>
 
 
 

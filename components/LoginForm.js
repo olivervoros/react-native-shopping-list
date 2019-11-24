@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import { Input } from 'react-native-elements';
+import {Text, TextInput, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 export default class CreateShoppingList extends Component {
 
@@ -14,16 +13,13 @@ export default class CreateShoppingList extends Component {
 
         return(
             <View style={styles.container}>
-                <Text>Welcome to the Shopping List App!</Text>
-                <Input label="Email"/>
-                <Input label="Password"/>
+                <Text style={styles.title}>Welcome to the Shopping List App!</Text>
+                <TextInput placeholder="Email" style={styles.textInputStyle} />
+                <TextInput placeholder="Password" style={styles.textInputStyle} />
                 <TouchableOpacity onPress={login}>
                 <Text style={styles.loginButtonView}>LOGIN</Text>
                 </TouchableOpacity>
             </View>
-
-
-
         )
     }
 }
@@ -46,5 +42,18 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         fontSize: 18,
         fontWeight: 'bold'
+    },
+    textInputStyle: {
+        paddingLeft: 10,
+        width:300,
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom:15
+    },
+    title: {
+        fontSize: 22,
+        fontWeight: "bold",
+        marginBottom: 40
     }
 });

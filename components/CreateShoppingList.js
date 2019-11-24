@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TextInput, View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {TextInput, View, StyleSheet, TouchableOpacity, Text, ScrollView} from 'react-native';
 
 export default class CreateShoppingList extends Component {
 
@@ -12,6 +12,7 @@ export default class CreateShoppingList extends Component {
         const { backToMain, createShoppingList} = this.props;
 
         return(
+            <ScrollView>
             <View style={styles.container}>
                 <Text style={styles.title}>Create New Shopping List</Text>
                 <View style={{ marginBottom:25 }}>
@@ -26,6 +27,7 @@ export default class CreateShoppingList extends Component {
                 <TouchableOpacity onPress={() => createShoppingList(this.state)}><Text style={styles.addShoppingListButtonView2}>Create Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView3}>Back to Home</Text></TouchableOpacity>
             </View>
+            </ScrollView>
 
 
 
