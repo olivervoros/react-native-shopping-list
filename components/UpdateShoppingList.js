@@ -11,7 +11,7 @@ export default class UpdateShoppingList extends Component {
 
         const { backToMain, updateShoppingList, shoppingLists, updateShoppingListID} = this.props;
 
-        const shoppingListItem = shoppingLists.find(item => item.id === updateShoppingListID);
+        const shoppingListItem = shoppingLists.find(item => item._id === updateShoppingListID);
 
         return(
             <ScrollView>
@@ -26,8 +26,8 @@ export default class UpdateShoppingList extends Component {
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" defaultValue={shoppingListItem.items['water'].toString()} />
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" defaultValue={shoppingListItem.items['apples'].toString()} />
                 </View>
-                <TouchableOpacity onPress={() => updateShoppingList(updateShoppingListID, shoppingListItem, this.state)}><Text style={styles.addShoppingListButtonView2}>UPDATE Shopping List</Text></TouchableOpacity>
-                <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView3}>Back to Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => updateShoppingList(updateShoppingListID, shoppingListItem, this.state)}><Text style={styles.updateShoppingListButton}>UPDATE Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToMain}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
             </View>
             </ScrollView>
         )
@@ -40,22 +40,31 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 75
     },
-    addShoppingListButtonView2: {
+    backToHomeButton: {
+        width:300,
+        height:50,
+        marginBottom: 25,
+        backgroundColor: '#ffa500',
+        padding: 10,
+        color: '#fff',
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 18,
+        fontWeight: "bold",
+    },
+    updateShoppingListButton: {
         width:300,
         height:50,
         marginBottom: 25,
         backgroundColor: '#3fa9a1',
         padding: 10,
         color: '#fff',
-    },
-    addShoppingListButtonView3: {
-        width:300,
-        height:50,
-        marginBottom: 25,
-        backgroundColor: '#312784',
-        padding: 10,
-        color: '#fff',
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 18,
+        fontWeight: "bold",
     },
     createShoppingListTextInput: {
         paddingLeft: 10,

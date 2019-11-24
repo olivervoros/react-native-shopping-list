@@ -9,14 +9,17 @@ export default class CreateShoppingList extends Component {
 
     render() {
 
-        const { login } = this.props;
+        const { login, loginErrorMsg } = this.props;
+
+        const errorMessage = <Text style={styles.loginErrorMessage}>Invalid email address or password!</Text>;
 
         return(
             <View style={styles.container}>
                 <Text style={styles.title}>Welcome to the Shopping List App!</Text>
-                <TextInput placeholder="Email" style={styles.textInputStyle} />
-                <TextInput placeholder="Password" style={styles.textInputStyle} />
-                <TouchableOpacity onPress={login}>
+                { loginErrorMsg ? errorMessage : <Text></Text>}
+                <TextInput onChangeText={(email) => this.setState({email: email})} placeholder="Email" style={styles.textInputStyle} />
+                <TextInput onChangeText={(password) => this.setState({password: password})} placeholder="Password" style={styles.textInputStyle} />
+                <TouchableOpacity onPress={() => login(this.state)}>
                 <Text style={styles.loginButtonView}>LOGIN</Text>
                 </TouchableOpacity>
             </View>
@@ -55,5 +58,16 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: "bold",
         marginBottom: 40
+    },
+    loginErrorMessage: {
+        width:300,
+        height:50,
+        backgroundColor: "red",
+        color: "white",
+        marginBottom: 25,
+        fontWeight: "bold",
+        fontSize:16,
+        textAlign: "center",
+        paddingTop: 15,
     }
 });

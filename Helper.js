@@ -1,4 +1,22 @@
+import {AsyncStorage} from 'react-native';
 
+export const API_ENDPOINT = 'http://api.sancusprojects.com:3000/api';
+
+export async function getAuthTokenFromCookie() {
+
+    try {
+        const value = await AsyncStorage.getItem('token');
+        if (value !== null) {
+            // We have data!!
+            return value;
+        }
+    } catch (error) {
+        return false;
+    }
+
+}
+
+/*
 export function getDummyShoppingList() {
     return [
         {id: 1, title: "Oliver's Shopping list 2019 08 10.", author: "Oliver", date: "10 03 1980", items : {'milk': 1, 'eggs': 2, 'water': 3, 'apples': 4}},
@@ -9,10 +27,7 @@ export function getDummyShoppingList() {
 
     ];
 }
-
-export function getShoppingListItemsArray() {
-    return ['milk', 'eggs', 'water', 'apples'];
-}
+*/
 
 // converts to mm dd yy TO dd/mm/yy
 export function convertJSToUserDate(date) {

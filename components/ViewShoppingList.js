@@ -12,7 +12,7 @@ export default class ViewShoppingList extends Component {
 
         const { shoppingLists, presentShoppingListID, backToMain, loadShoppingListForm, deleteShoppingList } = this.props;
 
-        const shoppingListItem = shoppingLists.find(item => item.id === presentShoppingListID);
+        const shoppingListItem = shoppingLists.find(item => item._id === presentShoppingListID);
 
         const shoppingItems = Object.keys(shoppingListItem.items).map(key =>
             <Text style={styles.viewShoppingListText} key={key}>{capitaliseString(key)} : {shoppingListItem.items[key]}</Text>
@@ -26,8 +26,8 @@ export default class ViewShoppingList extends Component {
                 <Text style={styles.viewShoppingListText}>Date: (dd/mm/yyyy): { convertJSToUserDate(shoppingListItem.date) }</Text>
                 { shoppingItems }
                 <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => loadShoppingListForm(shoppingListItem.id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => deleteShoppingList(shoppingListItem.id)}><Text style={styles.addShoppingListButtonView3}>Delete Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => loadShoppingListForm(shoppingListItem._id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => deleteShoppingList(shoppingListItem._id)}><Text style={styles.deleteButtonView}>Delete Shopping List</Text></TouchableOpacity>
             </View>
             </ScrollView>
 
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 75
     },
     addShoppingListButtonView1: {
         width:300,
@@ -51,6 +52,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffa500',
         padding: 10,
         color: '#fff',
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 18,
+        fontWeight: "bold",
     },
     addShoppingListButtonView2: {
         width:300,
@@ -59,14 +64,22 @@ const styles = StyleSheet.create({
         backgroundColor: '#3fa9a1',
         padding: 10,
         color: '#fff',
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 18,
+        fontWeight: "bold",
     },
-    addShoppingListButtonView3: {
+    deleteButtonView: {
         width:300,
         height:50,
         marginBottom: 25,
-        backgroundColor: '#312784',
+        backgroundColor: '#cd0000',
         padding: 10,
         color: '#fff',
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 18,
+        fontWeight: "bold",
     },
     viewShoppingListText: {
         paddingLeft: 10,

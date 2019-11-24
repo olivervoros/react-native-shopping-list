@@ -24,8 +24,8 @@ export default class CreateShoppingList extends Component {
                 <TextInput placeholder="Water" style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" />
                 <TextInput placeholder="Apples" style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" />
                 </View>
-                <TouchableOpacity onPress={() => createShoppingList(this.state)}><Text style={styles.addShoppingListButtonView2}>Create Shopping List</Text></TouchableOpacity>
-                <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView3}>Back to Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => createShoppingList(this.state)}><Text style={styles.addShoppingListButton}>Create Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToMain}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
             </View>
             </ScrollView>
 
@@ -41,22 +41,31 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 75
     },
-    addShoppingListButtonView2: {
+    addShoppingListButton: {
         width:300,
         height:50,
         marginBottom: 25,
         backgroundColor: '#3fa9a1',
         padding: 10,
         color: '#fff',
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 18,
+        fontWeight: "bold",
     },
-    addShoppingListButtonView3: {
+    backToHomeButton: {
         width:300,
         height:50,
         marginBottom: 25,
-        backgroundColor: '#312784',
+        backgroundColor: '#ffa500',
         padding: 10,
         color: '#fff',
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 18,
+        fontWeight: "bold",
     },
     createShoppingListTextInput: {
         paddingLeft: 10,
