@@ -18,7 +18,6 @@ export default class CreateShoppingList extends Component {
                 <View style={{ marginBottom:25 }}>
                 <TextInput placeholder="Title" style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" />
                 <TextInput placeholder="Author" style={styles.createShoppingListTextInput}  onChangeText={(author) => this.setState({author : author})} name="author" />
-                <TextInput placeholder="Date (dd/mm/yyyy)" style={styles.createShoppingListTextInput} onChangeText={(date) => this.setState({date : date})} name="date" />
                 <TextInput placeholder="Milk" style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" />
                 <TextInput placeholder="Eggs" style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" />
                 <TextInput placeholder="Water" style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" />

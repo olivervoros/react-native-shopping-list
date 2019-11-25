@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Text, ScrollView, StyleSheet, TouchableOpacity, View, Alert} from 'react-native';
-import { convertJSToUserDate, capitaliseString } from "../Helper";
+import {Text, ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import { capitaliseString, convertJSToUserDate} from "../Helper";
 
 export default class ViewShoppingList extends Component {
 
@@ -23,7 +23,7 @@ export default class ViewShoppingList extends Component {
             <View style={styles.container}>
                 <Text style={styles.title}>{ shoppingListItem.title }</Text>
                 <Text style={styles.viewShoppingListText}>Author: { shoppingListItem.author }</Text>
-                <Text style={styles.viewShoppingListText}>Date: (dd/mm/yyyy): { convertJSToUserDate(shoppingListItem.date) }</Text>
+                <Text style={styles.viewShoppingListText}>Date: { convertJSToUserDate(shoppingListItem.createdAt) }</Text>
                 { shoppingItems }
                 <TouchableOpacity onPress={backToHome}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => loadUpdateShoppingListForm(shoppingListItem._id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>

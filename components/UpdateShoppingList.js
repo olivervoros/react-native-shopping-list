@@ -20,7 +20,6 @@ export default class UpdateShoppingList extends Component {
                 <View style={{ marginBottom:25 }}>
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" defaultValue={shoppingListItem.title}/>
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(author) => this.setState({author : author})} name="author" defaultValue={shoppingListItem.author} />
-                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(date) => this.setState({date : date})} name="date" defaultValue={shoppingListItem.date} />
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" defaultValue={shoppingListItem.items['milk'].toString()} />
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" defaultValue={shoppingListItem.items['eggs'].toString()} />
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" defaultValue={shoppingListItem.items['water'].toString()} />

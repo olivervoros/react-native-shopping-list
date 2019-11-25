@@ -24,10 +24,8 @@ export default class App extends Component {
 
     componentDidMount = async () => {
 
-      this.loadShoppingList();
+      await this.loadShoppingList();
 
-        // set Interval
-        this.interval = setInterval(this.loadShoppingList, 1000);
     }
 
     loadShoppingList = async () => {
@@ -83,8 +81,9 @@ export default class App extends Component {
         }
     }
 
-    logout = () => {
-        this.setState({ viewShoppingListID: 0, loggedIn: false });
+    logout = async () => {
+        await AsyncStorage.setItem('token', "");
+        this.setState({ viewShoppingListID: 0, loggedIn: false, updateShoppingListID: 0 });
     }
 
     viewShoppingListItem = (_id) => {
@@ -103,7 +102,6 @@ export default class App extends Component {
 
         let title = args.title;
         let author = args.author;
-        let userDate = args.date;
         let milk = args.milk;
         let eggs = args.eggs;
         let water = args.water;
@@ -111,7 +109,7 @@ export default class App extends Component {
 
         let items = {'milk': milk, 'eggs': eggs, 'water': water, 'apples': apples};
 
-        let payload = {title: title, author: author, date: userDate, items: items};
+        let payload = {title: title, author: author, items: items};
 
         try {
             let token = await AsyncStorage.getItem('token');
@@ -122,7 +120,7 @@ export default class App extends Component {
             // You're dispatching not only the metadata, but also setting isDataInitialized to true, to denote, that data has been loaded
 
             this.setState({
-                shoppingLists: [...this.state.shoppingLists, newShoppingListItem.data],
+                shoppingLists: [newShoppingListItem.data, ...this.state.shoppingLists],
                 page: "HOME",
                 viewShoppingListID: 0,
                 updateShoppingListID: 0
@@ -138,16 +136,13 @@ export default class App extends Component {
 
         let title = (args && args.title) ? args.title : shoppingListItem.title;
         let author =  (args && args.author) ? args.author : shoppingListItem.author;
-        let userDate =  (args && args.date) ? args.date : shoppingListItem.date;
         let milk =  (args && args.milk) ? args.milk : shoppingListItem.items.milk.toString();
         let eggs =  (args && args.eggs) ? args.eggs : shoppingListItem.items.eggs.toString();
         let water =  (args && args.water) ? args.water : shoppingListItem.items.water.toString();
         let apples =  (args && args.apples) ? args.apples : shoppingListItem.items.apples.toString();
         let items = {'milk': milk, 'eggs': eggs, 'water': water, 'apples': apples};
 
-        let payload = {title: title, author: author, date: userDate, items: items};
-
-        const objIndex = this.state.shoppingLists.findIndex((obj => parseInt(obj._id) === updateShoppingListID));
+        let payload = {title: title, author: author, date: shoppingListItem.date, items: items};
 
         try {
 
