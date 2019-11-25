@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Text, ScrollView, StyleSheet, TouchableOpacity, View, Alert} from 'react-native';
 import { convertJSToUserDate, capitaliseString } from "../Helper";
 
 export default class ViewShoppingList extends Component {
@@ -10,9 +10,9 @@ export default class ViewShoppingList extends Component {
 
     render() {
 
-        const { shoppingLists, presentShoppingListID, backToMain, loadShoppingListForm, deleteShoppingList } = this.props;
+        const { shoppingLists, viewShoppingListID, backToHome, loadUpdateShoppingListForm, confirmDeleteAlert } = this.props;
 
-        const shoppingListItem = shoppingLists.find(item => item._id === presentShoppingListID);
+        const shoppingListItem = shoppingLists.find(item => item._id === viewShoppingListID);
 
         const shoppingItems = Object.keys(shoppingListItem.items).map(key =>
             <Text style={styles.viewShoppingListText} key={key}>{capitaliseString(key)} : {shoppingListItem.items[key]}</Text>
@@ -25,9 +25,9 @@ export default class ViewShoppingList extends Component {
                 <Text style={styles.viewShoppingListText}>Author: { shoppingListItem.author }</Text>
                 <Text style={styles.viewShoppingListText}>Date: (dd/mm/yyyy): { convertJSToUserDate(shoppingListItem.date) }</Text>
                 { shoppingItems }
-                <TouchableOpacity onPress={backToMain}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => loadShoppingListForm(shoppingListItem._id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => deleteShoppingList(shoppingListItem._id)}><Text style={styles.deleteButtonView}>Delete Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToHome}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => loadUpdateShoppingListForm(shoppingListItem._id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => confirmDeleteAlert(shoppingListItem._id)}><Text style={styles.deleteButtonView}>Delete Shopping List</Text></TouchableOpacity>
             </View>
             </ScrollView>
 

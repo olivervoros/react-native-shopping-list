@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View, ScrollView, AsyncStorage } from 'react-native';
-import { API_ENDPOINT, getAuthTokenFromCookie } from './Helper';
+import { TouchableOpacity, StyleSheet, Text, View, ScrollView, AsyncStorage, Alert } from 'react-native';
+import { API_ENDPOINT } from './Helper';
 import CreateShoppingList from './components/CreateShoppingList';
 import LoginForm from './components/LoginForm';
 import ViewShoppingList from "./components/ViewShoppingList";
@@ -13,16 +13,24 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            loggedIn : true, // TODO
+            loggedIn : false,
             loginErrorMsg : false,
             shoppingLists: [],
-            displayCreateForm: false,
-            presentShoppingListID: -1
+            viewShoppingListID: 0,
+            updateShoppingListID: 0,
+            page: "HOME"
         }
     }
 
     componentDidMount = async () => {
 
+      this.loadShoppingList();
+
+        // set Interval
+        this.interval = setInterval(this.loadShoppingList, 1000);
+    }
+
+    loadShoppingList = async () => {
         try {
             const token = await AsyncStorage.getItem('token');
             if (token !== null) {
@@ -36,17 +44,17 @@ export default class App extends Component {
             }
 
         } catch (error) {
-            this.setState({ displayCreateForm: false, presentShoppingListID: -1, loggedIn: false, loginErrorMsg: true });
+            this.setState({ viewShoppingListID: 0, loggedIn: false, loginErrorMsg: true });
         }
     }
 
     loadCreateForm = () => {
-        this.setState({ displayCreateForm: true });
+        this.setState({ page: "CREATE" });
     }
 
     login = async (args = {}) => {
         let email = (args && args.email) ? args.email : "";
-        let password = (args && args.password) ? args.password : ""
+        let password = (args && args.password) ? args.password : "";
 
         let payload = {email: email, password: password};
 
@@ -59,36 +67,36 @@ export default class App extends Component {
                 try {
                     let token = res.data.token;
                     await AsyncStorage.setItem('token', token);
-                    this.setState({ displayCreateForm: false, presentShoppingListID: -1, loggedIn: true, loginErrorMsg: false });
+                    this.setState({ viewShoppingListID: 0, loggedIn: true, loginErrorMsg: false });
                 } catch (error) {
-                    this.setState({ displayCreateForm: false, presentShoppingListID: -1, loggedIn: false, loginErrorMsg: true });
+                    this.setState({ viewShoppingListID: 0, loggedIn: false, loginErrorMsg: true });
                 }
 
             } else {
 
-                this.setState({ displayCreateForm: false, presentShoppingListID: -1, loggedIn: false, loginErrorMsg: true });
+                this.setState({ viewShoppingListID: 0, loggedIn: false, loginErrorMsg: true });
             };
         } catch (error) {
             //alert(error);
-            this.setState({ displayCreateForm: false, presentShoppingListID: -1, loggedIn: false, loginErrorMsg: true });
+            this.setState({ viewShoppingListID: 0, loggedIn: false, loginErrorMsg: true });
 
         }
     }
 
     logout = () => {
-        this.setState({ displayCreateForm: false, presentShoppingListID: -1, loggedIn: false });
+        this.setState({ viewShoppingListID: 0, loggedIn: false });
     }
 
     viewShoppingListItem = (_id) => {
-        this.setState({ presentShoppingListID: _id });
+        this.setState({ page : "VIEW", viewShoppingListID: _id });
     }
 
-    loadShoppingListForm = (_id) => {
-        this.setState({ displayCreateForm: false, presentShoppingListID: -1, updateShoppingListID: _id });
+    loadUpdateShoppingListForm = (_id) => {
+        this.setState({ page: "UPDATE", viewShoppingListID: 0, updateShoppingListID: _id });
     }
 
-    backToMain = () => {
-        this.setState({ displayCreateForm: false, presentShoppingListID: -1, updateShoppingListID: -1 });
+    backToHome = () => {
+        this.setState({ page: "HOME", viewShoppingListID: 0, updateShoppingListID: 0 });
     }
 
     createShoppingList = async (args = {}) => {
@@ -115,7 +123,9 @@ export default class App extends Component {
 
             this.setState({
                 shoppingLists: [...this.state.shoppingLists, newShoppingListItem.data],
-                displayCreateForm: false,
+                page: "HOME",
+                viewShoppingListID: 0,
+                updateShoppingListID: 0
             });
 
         } catch (error) {
@@ -161,13 +171,7 @@ export default class App extends Component {
 
             // You're dispatching not only the metadata, but also setting isDataInitialized to true, to denote, that data has been loaded
 
-            this.setState({ shoppingLists: shoppingLists.data });
-
-            this.setState({
-                displayCreateForm: false,
-                presentShoppingListID: -1,
-                updateShoppingListID: -1
-            });
+            this.setState({ shoppingLists: shoppingLists.data, viewShoppingListID: 0, updateShoppingListID: 0, page: "HOME" });
 
         } catch (error) {
             alert(error);
@@ -175,7 +179,20 @@ export default class App extends Component {
 
     }
 
+    confirmDeleteAlert = async (deletedId) => {
+        Alert.alert(
+            'Hello!',
+            'You are about to delete a shopping list item! Are you sure?',
+            [
+                {text: 'Ooops, NO!', onPress: () => {} },
+                {text: 'YES, delete it!', onPress: () => this.deleteShoppingList(deletedId)},
+            ],
+            {cancelable: false},
+        );
+    }
+
     deleteShoppingList = async (deletedId) => {
+
         const filteredShoppingList = this.state.shoppingLists.filter((value, index, arr) => {
 
             return value._id !== deletedId;
@@ -189,11 +206,7 @@ export default class App extends Component {
             );
             // You're dispatching not only the metadata, but also setting isDataInitialized to true, to denote, that data has been loaded
 
-            this.setState({
-                shoppingLists: filteredShoppingList,
-                displayCreateForm: false,
-                presentShoppingListID: -1
-            });
+            this.setState({ shoppingLists: filteredShoppingList, viewShoppingListID: 0, updateShoppingListID: 0, page: "HOME" });
 
         } catch (error) {
             alert(error);
@@ -207,17 +220,16 @@ export default class App extends Component {
         }
 
 
-        // TODO: remove parseint, horrible tweak
-        if( parseInt(this.state.presentShoppingListID) > 0 ) {
-            return <ViewShoppingList backToMain={this.backToMain} loadShoppingListForm={this.loadShoppingListForm} deleteShoppingList={this.deleteShoppingList} shoppingLists={this.state.shoppingLists} presentShoppingListID={this.state.presentShoppingListID}></ViewShoppingList>
+        if( this.state.page==="VIEW") {
+            return <ViewShoppingList backToHome={this.backToHome} confirmDeleteAlert={this.confirmDeleteAlert} loadUpdateShoppingListForm={this.loadUpdateShoppingListForm} shoppingLists={this.state.shoppingLists} viewShoppingListID={this.state.viewShoppingListID}></ViewShoppingList>
         }
 
-        if (parseInt(this.state.updateShoppingListID) > 0) {
-            return <UpdateShoppingList backToMain={this.backToMain} updateShoppingList={this.updateShoppingList} shoppingLists={this.state.shoppingLists} updateShoppingListID={this.state.updateShoppingListID}></UpdateShoppingList>
+        if (this.state.page==="UPDATE") {
+            return <UpdateShoppingList backToHome={this.backToHome} updateShoppingList={this.updateShoppingList} shoppingLists={this.state.shoppingLists} updateShoppingListID={this.state.updateShoppingListID}></UpdateShoppingList>
         }
 
-        if(this.state.displayCreateForm) {
-            return <CreateShoppingList backToMain={this.backToMain} createShoppingList={this.createShoppingList} ></CreateShoppingList>
+        if(this.state.page==="CREATE") {
+            return <CreateShoppingList backToHome={this.backToHome} createShoppingList={this.createShoppingList} ></CreateShoppingList>
         }
 
         const loginButton = <TouchableOpacity onPress={this.login}><Text style={styles.addShoppingListButtonText}>LOGIN</Text></TouchableOpacity>;

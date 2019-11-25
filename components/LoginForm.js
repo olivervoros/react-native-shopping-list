@@ -18,7 +18,7 @@ export default class CreateShoppingList extends Component {
                 <Text style={styles.title}>Welcome to the Shopping List App!</Text>
                 { loginErrorMsg ? errorMessage : <Text></Text>}
                 <TextInput onChangeText={(email) => this.setState({email: email})} placeholder="Email" style={styles.textInputStyle} />
-                <TextInput onChangeText={(password) => this.setState({password: password})} placeholder="Password" style={styles.textInputStyle} />
+                <TextInput secureTextEntry={true} onChangeText={(password) => this.setState({password: password})} placeholder="Password" style={styles.textInputStyle} />
                 <TouchableOpacity onPress={() => login(this.state)}>
                 <Text style={styles.loginButtonView}>LOGIN</Text>
                 </TouchableOpacity>

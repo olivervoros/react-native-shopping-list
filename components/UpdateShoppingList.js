@@ -9,7 +9,7 @@ export default class UpdateShoppingList extends Component {
 
     render() {
 
-        const { backToMain, updateShoppingList, shoppingLists, updateShoppingListID} = this.props;
+        const { backToHome, updateShoppingList, shoppingLists, updateShoppingListID} = this.props;
 
         const shoppingListItem = shoppingLists.find(item => item._id === updateShoppingListID);
 
@@ -27,7 +27,7 @@ export default class UpdateShoppingList extends Component {
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" defaultValue={shoppingListItem.items['apples'].toString()} />
                 </View>
                 <TouchableOpacity onPress={() => updateShoppingList(updateShoppingListID, shoppingListItem, this.state)}><Text style={styles.updateShoppingListButton}>UPDATE Shopping List</Text></TouchableOpacity>
-                <TouchableOpacity onPress={backToMain}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
             </View>
             </ScrollView>
         )

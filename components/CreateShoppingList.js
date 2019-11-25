@@ -9,7 +9,7 @@ export default class CreateShoppingList extends Component {
 
     render() {
 
-        const { backToMain, createShoppingList} = this.props;
+        const { backToHome, createShoppingList} = this.props;
 
         return(
             <ScrollView>
@@ -25,7 +25,7 @@ export default class CreateShoppingList extends Component {
                 <TextInput placeholder="Apples" style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" />
                 </View>
                 <TouchableOpacity onPress={() => createShoppingList(this.state)}><Text style={styles.addShoppingListButton}>Create Shopping List</Text></TouchableOpacity>
-                <TouchableOpacity onPress={backToMain}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
             </View>
             </ScrollView>
 
