@@ -22,9 +22,9 @@ export default class App extends Component {
         }
     }
 
-    componentDidMount = async () => {
+    componentDidMount = () => {
 
-      await this.loadShoppingList();
+      this.loadShoppingList();
 
     }
 
@@ -102,10 +102,10 @@ export default class App extends Component {
 
         let title = args.title;
         let author = args.author;
-        let milk = args.milk;
-        let eggs = args.eggs;
-        let water = args.water;
-        let apples = args.apples;
+        let milk = args.milk || 0;
+        let eggs = args.eggs || 0;
+        let water = args.water || 0;
+        let apples = args.apples || 0;
 
         let items = {'milk': milk, 'eggs': eggs, 'water': water, 'apples': apples};
 

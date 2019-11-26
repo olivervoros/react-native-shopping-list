@@ -13,6 +13,11 @@ export default class UpdateShoppingList extends Component {
 
         const shoppingListItem = shoppingLists.find(item => item._id === updateShoppingListID);
 
+        const milkDefaultValue = (shoppingListItem.items['milk']) ? shoppingListItem.items['milk'].toString() : 0;
+        const eggsDefaultValue = (shoppingListItem.items['eggs']) ? shoppingListItem.items['eggs'].toString() : 0;
+        const waterDefaultValue = (shoppingListItem.items['water']) ? shoppingListItem.items['water'].toString() : 0;
+        const applesDefaultValue = (shoppingListItem.items['apples']) ? shoppingListItem.items['apples'].toString() : 0;
+
         return(
             <ScrollView>
             <View style={styles.container}>
@@ -20,10 +25,10 @@ export default class UpdateShoppingList extends Component {
                 <View style={{ marginBottom:25 }}>
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" defaultValue={shoppingListItem.title}/>
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(author) => this.setState({author : author})} name="author" defaultValue={shoppingListItem.author} />
-                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" defaultValue={shoppingListItem.items['milk'].toString()} />
-                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" defaultValue={shoppingListItem.items['eggs'].toString()} />
-                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" defaultValue={shoppingListItem.items['water'].toString()} />
-                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" defaultValue={shoppingListItem.items['apples'].toString()} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" defaultValue={milkDefaultValue} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" defaultValue={eggsDefaultValue} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" defaultValue={waterDefaultValue} />
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" defaultValue={applesDefaultValue} />
                 </View>
                 <TouchableOpacity onPress={() => updateShoppingList(updateShoppingListID, shoppingListItem, this.state)}><Text style={styles.updateShoppingListButton}>UPDATE Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>

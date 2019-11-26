@@ -14,9 +14,14 @@ export default class ViewShoppingList extends Component {
 
         const shoppingListItem = shoppingLists.find(item => item._id === viewShoppingListID);
 
-        const shoppingItems = Object.keys(shoppingListItem.items).map(key =>
-            <Text style={styles.viewShoppingListText} key={key}>{capitaliseString(key)} : {shoppingListItem.items[key]}</Text>
-        )
+        const shoppingItems = Object.keys(shoppingListItem.items).map(key => {
+
+            if (shoppingListItem.items[key] !== '0' && shoppingListItem.items[key] !== 0) {
+
+                return <Text style={styles.viewShoppingListText}
+                             key={key}>{capitaliseString(key)} : {shoppingListItem.items[key]}</Text>;
+            }
+        });
 
         return(
             <ScrollView>
