@@ -6,6 +6,22 @@ export default class ViewShoppingList extends Component {
 
     constructor(props) {
         super(props);
+        this.state = { completed: [] }
+
+    }
+
+    completedShoppingListItem = (key) => {
+
+        if(this.state.completed.includes(key)) {
+            let index = this.state.completed.indexOf(key);
+            if (index !== -1) {
+                this.state.completed.splice(index, 1);
+                this.setState({completed:  this.state.completed});
+            }
+        } else {
+
+            this.setState({completed: [...this.state.completed, key]});
+        }
     }
 
     render() {
@@ -18,8 +34,9 @@ export default class ViewShoppingList extends Component {
 
             if (shoppingListItem.items[key] !== '0' && shoppingListItem.items[key] !== 0) {
 
-                return <Text style={styles.viewShoppingListText}
-                             key={key}>{capitaliseString(key)} : {shoppingListItem.items[key]}</Text>;
+                const completedStyle = (this.state.completed.includes(key)) ? styles.completed : "";
+
+                return <TouchableOpacity key={key} onPress={() => this.completedShoppingListItem(key)}><Text style={[styles.viewShoppingListText, completedStyle]} key={key}>{capitaliseString(key)} : {shoppingListItem.items[key]}</Text></TouchableOpacity>;
             }
         });
 
@@ -61,6 +78,7 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         fontSize: 18,
         fontWeight: "bold",
+        marginTop:75
     },
     addShoppingListButtonView2: {
         width:300,
@@ -87,18 +105,20 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     viewShoppingListText: {
-        paddingLeft: 10,
-        width:300,
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom:15,
-        paddingTop: 10
+        fontSize: 24,
+        fontWeight: "normal",
+        paddingTop: 20,
+        textAlign: "left",
     },
     title: {
-        fontSize: 22,
+        fontSize: 26,
         fontWeight: "bold",
-        marginBottom: 40
+        marginTop: 40,
+        marginBottom: 20
     },
+    completed: {
+        textDecorationLine: 'line-through',
+        textDecorationStyle: 'solid'
+    }
 
 });
