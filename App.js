@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View, ScrollView, AsyncStorage, Alert } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View, ScrollView, AsyncStorage, Alert, Image } from 'react-native';
 import { API_ENDPOINT } from './Helper';
 import CreateShoppingList from './components/CreateShoppingList';
 import LoginForm from './components/LoginForm';
@@ -13,7 +13,7 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            loggedIn : false,
+            loggedIn : true, // TODO
             loginErrorMsg : false,
             shoppingLists: [],
             viewShoppingListID: 0,
@@ -22,9 +22,9 @@ export default class App extends Component {
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
 
-      this.loadShoppingList();
+      await this.loadShoppingList();
 
     }
 
@@ -106,10 +106,11 @@ export default class App extends Component {
         let eggs = args.eggs || 0;
         let water = args.water || 0;
         let apples = args.apples || 0;
+        let note = args.note || "";
 
         let items = {'milk': milk, 'eggs': eggs, 'water': water, 'apples': apples};
 
-        let payload = {title: title, author: author, items: items};
+        let payload = {title: title, author: author, note: note, items: items};
 
         try {
             let token = await AsyncStorage.getItem('token');
@@ -136,13 +137,14 @@ export default class App extends Component {
 
         let title = (args && args.title) ? args.title : shoppingListItem.title;
         let author =  (args && args.author) ? args.author : shoppingListItem.author;
+        let note =  (args && args.note) ? args.note : shoppingListItem.note;
         let milk =  (args && args.milk) ? args.milk : shoppingListItem.items.milk.toString();
         let eggs =  (args && args.eggs) ? args.eggs : shoppingListItem.items.eggs.toString();
         let water =  (args && args.water) ? args.water : shoppingListItem.items.water.toString();
         let apples =  (args && args.apples) ? args.apples : shoppingListItem.items.apples.toString();
         let items = {'milk': milk, 'eggs': eggs, 'water': water, 'apples': apples};
 
-        let payload = {title: title, author: author, date: shoppingListItem.date, items: items};
+        let payload = {title: title, author: author, note: note, date: shoppingListItem.date, items: items};
 
         try {
 
@@ -234,19 +236,23 @@ export default class App extends Component {
         return (
             <ScrollView>
             <View style={styles.container}>
-                <Text style={styles.title}>SancusLabs Shopping List App</Text>
+                <Text style={styles.title}>Shopping List App</Text>
+                <Image
+                    style={{width: 300, height: 200, marginBottom: 20}}
+                    source={require('./supermarket.jpg')}
+                />
                 <TouchableOpacity style={styles.addShoppingListButtonView} onPress={this.loadCreateForm}>
                     <Text style={styles.addShoppingListButtonText}>CREATE NEW SHOPPING LIST</Text>
                 </TouchableOpacity>
-                <View style={styles.loginButtonView}>
-                    {this.state.loggedIn ? logoutButton : loginButton}
-                </View>
                 <Text style={styles.title}>View Shopping Lists:</Text>
                 {this.state.shoppingLists.map((shoppingList, i) =>
                     <TouchableOpacity key={shoppingList._id} onPress={() => this.viewShoppingListItem(shoppingList._id)}>
                         <Text style={styles.shoppingListItem} key={shoppingList._id}>{shoppingList.title}</Text>
                     </TouchableOpacity>
                 )}
+                <View style={styles.loginButtonView}>
+                    {this.state.loggedIn ? logoutButton : loginButton}
+                </View>
             </View>
             </ScrollView>
         );
@@ -262,9 +268,10 @@ const styles = StyleSheet.create({
         marginTop: 75
     },
     title: {
-        fontSize: 26,
+        fontSize: 32,
         fontWeight: "bold",
-        marginBottom: 40
+        marginBottom: 40,
+        marginTop:20
     },
     shoppingListItem : {
         padding: 10,
@@ -300,5 +307,7 @@ const styles = StyleSheet.create({
         padding: 10,
         color: '#fff',
         textAlign: 'center'
+    }, imageStyle: {
+        marginBottom:20
     }
 });

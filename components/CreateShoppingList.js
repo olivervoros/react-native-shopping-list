@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TextInput, View, StyleSheet, TouchableOpacity, Text, ScrollView} from 'react-native';
+import {TextInput, View, StyleSheet, TouchableOpacity, Text, ScrollView, Image} from 'react-native';
 
 export default class CreateShoppingList extends Component {
 
@@ -15,13 +15,31 @@ export default class CreateShoppingList extends Component {
             <ScrollView>
             <View style={styles.container}>
                 <Text style={styles.title}>Create New Shopping List</Text>
+                <Image
+                    style={{width: 300, height: 200, marginBottom: 20}}
+                    source={require('../shoppinglist.jpg')}
+                />
                 <View style={{ marginBottom:25 }}>
-                <TextInput placeholder="Title" style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" />
-                <TextInput placeholder="Author" style={styles.createShoppingListTextInput}  onChangeText={(author) => this.setState({author : author})} name="author" />
-                <TextInput placeholder="Milk" style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" />
-                <TextInput placeholder="Eggs" style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" />
-                <TextInput placeholder="Water" style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" />
-                <TextInput placeholder="Apples" style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" />
+                    <Text style={styles.shoppingListItemText}>Shopping List Title:</Text>
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" />
+                    <Text style={styles.shoppingListItemText}>Author:</Text>
+                    <TextInput style={styles.createShoppingListTextInput}  onChangeText={(author) => this.setState({author : author})} name="author" />
+                    <Text style={styles.shoppingListItemText}>Milk:</Text>
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(milk) => this.setState({milk : milk})} name="milk" />
+                    <Text style={styles.shoppingListItemText}>Eggs:</Text>
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(eggs) => this.setState({eggs : eggs})} name="eggs" />
+                    <Text style={styles.shoppingListItemText}>Water:</Text>
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(water) => this.setState({water : water})} name="water" />
+                    <Text style={styles.shoppingListItemText}>Apples:</Text>
+                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(apples) => this.setState({apples : apples})} name="apples" />
+                    <Text style={styles.shoppingListItemTextArea}>Notes (anything to mention...)</Text>
+                    <TextInput
+                        style={styles.createShoppingListTextArea}
+                        multiline={true}
+                        numberOfLines={4}
+                        onChangeText={(note) => this.setState({note : note})}
+                        name="note"
+                    />
                 </View>
                 <TouchableOpacity onPress={() => createShoppingList(this.state)}><Text style={styles.addShoppingListButton}>Create Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
@@ -74,9 +92,30 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom:15
     },
+    createShoppingListTextArea: {
+        paddingLeft: 10,
+        width:300,
+        height: 120,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom:15,
+    },
     title: {
         fontSize: 26,
         fontWeight: "bold",
         marginBottom: 40
     },
+    shoppingListItemText: {
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: "left",
+        marginBottom: 15
+    },
+    shoppingListItemTextArea: {
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: "left",
+        marginTop: 30,
+        marginBottom: 15
+    }
 });

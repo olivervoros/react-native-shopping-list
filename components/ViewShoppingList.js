@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Text, ScrollView, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import { capitaliseString, convertJSToUserDate} from "../Helper";
 
 export default class ViewShoppingList extends Component {
@@ -43,10 +43,15 @@ export default class ViewShoppingList extends Component {
         return(
             <ScrollView>
             <View style={styles.container}>
+                <Text style={styles.shoppingListItemText}>View Shopping List</Text>
+                <Image
+                    style={{width: 300, height: 200, marginBottom: 20}}
+                    source={require('../update.jpg')}
+                />
                 <Text style={styles.title}>{ shoppingListItem.title }</Text>
-                <Text style={styles.viewShoppingListText}>Author: { shoppingListItem.author }</Text>
-                <Text style={styles.viewShoppingListText}>Date: { convertJSToUserDate(shoppingListItem.createdAt) }</Text>
+                <Text>(Click on the item when it is found...)</Text>
                 { shoppingItems }
+                <Text>{ shoppingListItem.note }</Text>
                 <TouchableOpacity onPress={backToHome}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => loadUpdateShoppingListForm(shoppingListItem._id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => confirmDeleteAlert(shoppingListItem._id)}><Text style={styles.deleteButtonView}>Delete Shopping List</Text></TouchableOpacity>
@@ -119,6 +124,12 @@ const styles = StyleSheet.create({
     completed: {
         textDecorationLine: 'line-through',
         textDecorationStyle: 'solid'
+    },
+    shoppingListItemText: {
+        fontSize: 26,
+        fontWeight: "bold",
+        textAlign: "left",
+        marginBottom: 15
     }
 
 });
