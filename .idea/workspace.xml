@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3e72c7f9-5be7-4762-8c7a-d5beb907cf44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/CreateShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CreateShoppingList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/UpdateShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/UpdateShoppingList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ViewShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ViewShoppingList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/CreateShoppingList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="34" column="103" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="103" />
+            <state relative-caret-position="225">
+              <caret line="15" column="98" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="98" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -53,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="860">
-              <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
+            <state relative-caret-position="225">
+              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -86,8 +86,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/UpdateShoppingList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="41" column="60" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
+            <state relative-caret-position="330">
+              <caret line="22" column="98" selection-start-line="22" selection-start-column="98" selection-end-line="22" selection-end-column="98" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -135,9 +135,9 @@
         <option value="$PROJECT_DIR$/components/LoginForm.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/Helper.js" />
-        <option value="$PROJECT_DIR$/components/CreateShoppingList.js" />
         <option value="$PROJECT_DIR$/components/ViewShoppingList.js" />
         <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/components/CreateShoppingList.js" />
         <option value="$PROJECT_DIR$/components/UpdateShoppingList.js" />
       </list>
     </option>
@@ -232,12 +232,12 @@
       <workItem from="1574696758592" duration="5441000" />
       <workItem from="1574799864974" duration="1024000" />
       <workItem from="1574801778765" duration="3576000" />
-      <workItem from="1574853709871" duration="3695000" />
+      <workItem from="1574853709871" duration="5211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69400000" />
+    <option name="totallyTimeSpent" value="70916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="22" y="44" width="1400" height="790" extended-state="0" />
@@ -462,33 +462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
-          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/CreateShoppingList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="34" column="103" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="103" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/ViewShoppingList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="487">
@@ -499,10 +472,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/CreateShoppingList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="98" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="98" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/UpdateShoppingList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="41" column="60" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
+        <state relative-caret-position="330">
+          <caret line="22" column="98" selection-start-line="22" selection-start-column="98" selection-end-line="22" selection-end-column="98" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {TextInput, View, StyleSheet, TouchableOpacity, Text, ScrollView, Image} from 'react-native';
+import {TextInput, View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default class CreateShoppingList extends Component {
 
@@ -12,7 +13,7 @@ export default class CreateShoppingList extends Component {
         const { backToHome, createShoppingList} = this.props;
 
         return(
-            <ScrollView>
+            <KeyboardAwareScrollView ontentContainerStyle={{ flexGrow: 1 }} enableOnAndroid={true}>
             <View style={styles.container}>
                 <Text style={styles.title}>Create New Shopping List</Text>
                 <Image
@@ -44,9 +45,7 @@ export default class CreateShoppingList extends Component {
                 <TouchableOpacity onPress={() => createShoppingList(this.state)}><Text style={styles.addShoppingListButton}>Create Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
             </View>
-            </ScrollView>
-
-
+            </KeyboardAwareScrollView>
 
         )
     }
