@@ -19,8 +19,6 @@ export default class CreateShoppingList extends Component {
 
     validateForm = async (args, createShoppingList) => {
 
-        console.log(args);
-
         if(! args.title || args.title==="") {
             this.setState({ missingTitleError: "You need to add a title!" });
         } else {

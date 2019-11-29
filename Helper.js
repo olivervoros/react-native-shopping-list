@@ -9,13 +9,14 @@ export function convertJSToUserDate(date) {
 }
 
 export function capitaliseString(string) {
-    return  (string.charAt(0).toUpperCase() + string.slice(1));
+    string = string.replace(/_/g, ' ');
+    return  string.replace(/\b\w/g, l => l.toUpperCase());
 }
 
 export function getVeggiesAndFruitsArray() {
     return { "apples": "Apples", "pear": "Pear", "lemon": "Lemon", "peach": "Peach", "strawberries" :
             "Strawberries", "plums" : "Plums", "banana" : "Bananas", "onion" : "Onion", "garlic" : "Garlic", 'tomatoes' : "Tomatoes",
-            "paprika" : "Paprika", "cucumber" : "Cucumber", "corn_in_tin" : "Corn in Tin",
+            "paprika" : "Paprika", "cucumber" : "Cucumber", "corn_in_tin" : "Corn in Tin", "carrot" : "Carrot", "white_carrot" : "White Carrot",
             "mushrooms" : "Mushrooms", "soup_vegetables" : "Soup Veggies", "potatoes" : "Potatoes"};
 }
 
@@ -50,11 +51,11 @@ export function getHomeProductsArray() {
 
 export function getBasicProductsArray() {
     return { "flour" : "Flour", "sugar" : "Sugar", "cooking_oil" : "Cooking Oil", "salt" : "Salt", "eggs" : "Eggs",
-        "rice" : "Rice", "pasta" : "Pasta"};
+        "rice" : "Rice", "pasta" : "Pasta", "spices" : "Spices"};
 }
 
 export function getExtraProductsArray() {
-    return { "extra1" : "Extra Product 1", "extra2" : "Extra Product 2", "extra3" : "Extra Product 3",
-        "extra4" : "Extra Product 4", "extra5" : "Extra Product 5" }
+    return { "extra_1" : "Extra Product 1", "extra_2" : "Extra Product 2", "extra_3" : "Extra Product 3",
+        "extra_4" : "Extra Product 4", "extra_5" : "Extra Product 5" }
 }
 

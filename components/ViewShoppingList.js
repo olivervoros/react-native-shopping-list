@@ -51,7 +51,6 @@ export default class ViewShoppingList extends Component {
                 <Text style={styles.title}>{ shoppingListItem.title }</Text>
                 <Text>(Click on the item when it is found...)</Text>
                 { shoppingItems }
-                <Text>{ shoppingListItem.note }</Text>
                 <TouchableOpacity onPress={backToHome}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => loadUpdateShoppingListForm(shoppingListItem._id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => confirmDeleteAlert(shoppingListItem._id)}><Text style={styles.deleteButtonView}>Delete Shopping List</Text></TouchableOpacity>

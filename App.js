@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View, ScrollView, AsyncStorage, Alert, Image } from 'react-native';
+import {
+    TouchableOpacity,
+    StyleSheet,
+    Text,
+    View,
+    ScrollView,
+    AsyncStorage,
+    Alert,
+    Image
+} from 'react-native';
 import { API_ENDPOINT } from './Helper';
 import CreateShoppingList from './components/CreateShoppingList';
 import LoginForm from './components/LoginForm';
 import ViewShoppingList from "./components/ViewShoppingList";
 import UpdateShoppingList from "./components/UpdateShoppingList";
 import axios from "axios";
+import {
+    getVeggiesAndFruitsArray,
+    getDrinksArray,
+    getDairyProductsArray,
+    getMeatArray,
+    getBakeryProductsArray,
+    getBasicProductsArray, getHomeProductsArray, getExtraProductsArray
+} from './Helper';
 
 export default class App extends Component {
 
@@ -100,17 +117,81 @@ export default class App extends Component {
 
     createShoppingList = async (args = {}) => {
 
+        let shoppingListItemsMap = new Map();
+
         let title = args.title;
         let author = args.author || "OV";
-        let milk = args.milk || 0;
-        let eggs = args.eggs || 0;
-        let water = args.water || 0;
-        let apples = args.apples || 0;
-        let note = args.note || "";
 
-        let items = {'milk': milk, 'eggs': eggs, 'water': water, 'apples': apples};
+        const veggiesAndFruitsArray = getVeggiesAndFruitsArray();
+        Object.keys(veggiesAndFruitsArray).map(key => {
+            let stringKey = key.toString();
 
-        let payload = {title: title, author: author, note: note, items: items};
+            let itemValue = args[stringKey] || "0";
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const drinkProductsArray = getDrinksArray();
+        Object.keys(drinkProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || "0";
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const dairyProductsArray = getDairyProductsArray();
+        Object.keys(dairyProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || "0";
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const meatProductsArray = getMeatArray();
+        Object.keys(meatProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || "0";
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const bakeryProductsArray = getBakeryProductsArray();
+        Object.keys(bakeryProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || "0";
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const basicProductsArray = getBasicProductsArray();
+        Object.keys(basicProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || "0";
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const homeProductsArray = getHomeProductsArray();
+        Object.keys(homeProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || "0";
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const extraProductsArray = getExtraProductsArray();
+        Object.keys(extraProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || "0";
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        let items = Object.fromEntries(shoppingListItemsMap);
+
+        console.log("CREATE");
+        console.log(items);
+
+        let payload = {title: title, author: author, items: items};
 
         try {
             let token = await AsyncStorage.getItem('token');
@@ -135,16 +216,80 @@ export default class App extends Component {
 
     updateShoppingList = async (updateShoppingListID, shoppingListItem, args) => {
 
+        let shoppingListItemsMap = new Map();
         let title = (args && args.title) ? args.title : shoppingListItem.title;
         let author =  (args && args.author) ? args.author : shoppingListItem.author;
-        let note =  (args && args.note) ? args.note : shoppingListItem.note;
-        let milk =  (args && args.milk) ? args.milk : shoppingListItem.items.milk.toString();
-        let eggs =  (args && args.eggs) ? args.eggs : shoppingListItem.items.eggs.toString();
-        let water =  (args && args.water) ? args.water : shoppingListItem.items.water.toString();
-        let apples =  (args && args.apples) ? args.apples : shoppingListItem.items.apples.toString();
-        let items = {'milk': milk, 'eggs': eggs, 'water': water, 'apples': apples};
 
-        let payload = {title: title, author: author, note: note, date: shoppingListItem.date, items: items};
+        const veggiesAndFruitsArray = getVeggiesAndFruitsArray();
+        Object.keys(veggiesAndFruitsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const drinkProductsArray = getDrinksArray();
+        Object.keys(drinkProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const dairyProductsArray = getDairyProductsArray();
+        Object.keys(dairyProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const meatProductsArray = getMeatArray();
+        Object.keys(meatProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const bakeryProductsArray = getBakeryProductsArray();
+        Object.keys(bakeryProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const basicProductsArray = getBasicProductsArray();
+        Object.keys(basicProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const homeProductsArray = getHomeProductsArray();
+        Object.keys(homeProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        const extraProductsArray = getExtraProductsArray();
+        Object.keys(extraProductsArray).map(key => {
+            let stringKey = key.toString();
+
+            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
+            shoppingListItemsMap.set(stringKey, itemValue);
+        });
+
+        let items = Object.fromEntries(shoppingListItemsMap);
+        console.log("UPDATE");
+        console.log(items);
+
+
+        let payload = {title: title, author: author, date: shoppingListItem.date, items: items};
 
         try {
 

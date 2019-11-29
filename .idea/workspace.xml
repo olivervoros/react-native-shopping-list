@@ -6,7 +6,10 @@
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/Helper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/CreateShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CreateShoppingList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/UpdateShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/UpdateShoppingList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ViewShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ViewShoppingList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,14 +26,18 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Helper.js">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="795">
+              <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/LoginForm.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1050">
-              <caret line="70" column="23" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="70" selection-end-column="23" />
+              <caret line="70" column="23" selection-start-line="62" selection-start-column="8" selection-end-line="70" selection-end-column="23" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -41,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3967">
-              <caret line="12" column="21" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="12" selection-end-column="21" />
+            <state relative-caret-position="1420">
+              <caret line="190" column="27" selection-start-line="190" selection-start-column="27" selection-end-line="190" selection-end-column="27" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -53,26 +60,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/components/ViewShoppingList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+            <state relative-caret-position="225">
+              <caret line="15" column="23" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/ViewShoppingList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="28" column="125" selection-start-line="28" selection-start-column="125" selection-end-line="28" selection-end-column="125" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/UpdateShoppingList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="22" column="98" selection-start-line="22" selection-start-column="98" selection-end-line="22" selection-end-column="98" />
+            <state relative-caret-position="621">
+              <caret line="209" column="5" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -83,8 +93,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/CreateShoppingList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="139" column="76" selection-start-line="139" selection-start-column="76" selection-end-line="139" selection-end-column="76" />
+            <state relative-caret-position="518">
+              <caret line="237" column="5" lean-forward="true" selection-start-line="229" selection-start-column="4" selection-end-line="237" selection-end-column="5" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -118,8 +128,9 @@
       <find>alert</find>
       <find>filter</find>
       <find>CreateShoppingList</find>
-      <find>subT</find>
+      <find>paper_roll</find>
       <find>map</find>
+      <find>subT</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,12 +144,12 @@
         <option value="$PROJECT_DIR$/.old/src/Helper.js" />
         <option value="$PROJECT_DIR$/components/LoginForm.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/components/UpdateShoppingList.js" />
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/components/CreateShoppingList.js" />
+        <option value="$PROJECT_DIR$/components/ViewShoppingList.js" />
         <option value="$PROJECT_DIR$/Helper.js" />
         <option value="$PROJECT_DIR$/App.js" />
-        <option value="$PROJECT_DIR$/components/ViewShoppingList.js" />
+        <option value="$PROJECT_DIR$/components/UpdateShoppingList.js" />
       </list>
     </option>
   </component>
@@ -233,12 +244,12 @@
       <workItem from="1574799864974" duration="1024000" />
       <workItem from="1574801778765" duration="3576000" />
       <workItem from="1574853709871" duration="5632000" />
-      <workItem from="1574963208417" duration="14565000" />
+      <workItem from="1574963208417" duration="22394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85902000" />
+    <option name="totallyTimeSpent" value="93731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="22" y="44" width="1400" height="790" extended-state="0" />
@@ -450,23 +461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/UpdateShoppingList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="22" column="98" selection-start-line="22" selection-start-column="98" selection-end-line="22" selection-end-column="98" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -480,7 +474,41 @@
     <entry file="file://$PROJECT_DIR$/components/LoginForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
-          <caret line="70" column="23" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="70" selection-end-column="23" />
+          <caret line="70" column="23" selection-start-line="62" selection-start-column="8" selection-end-line="70" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ViewShoppingList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="28" column="125" selection-start-line="28" selection-start-column="125" selection-end-line="28" selection-end-column="125" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1420">
+          <caret line="190" column="27" selection-start-line="190" selection-start-column="27" selection-end-line="190" selection-end-column="27" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -489,31 +517,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/CreateShoppingList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="139" column="76" selection-start-line="139" selection-start-column="76" selection-end-line="139" selection-end-column="76" />
+        <state relative-caret-position="518">
+          <caret line="237" column="5" lean-forward="true" selection-start-line="229" selection-start-column="4" selection-end-line="237" selection-end-column="5" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Helper.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
+    <entry file="file://$PROJECT_DIR$/components/UpdateShoppingList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3967">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="12" selection-end-column="21" />
+        <state relative-caret-position="621">
+          <caret line="209" column="5" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/ViewShoppingList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
         </state>
       </provider>
     </entry>
