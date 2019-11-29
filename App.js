@@ -13,7 +13,7 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            loggedIn : true, // TODO
+            loggedIn : false,
             loginErrorMsg : false,
             shoppingLists: [],
             viewShoppingListID: 0,
@@ -22,7 +22,7 @@ export default class App extends Component {
         }
     }
 
-    componentDidMount = async () => {
+    componentDidUpdate = async () => {
 
       await this.loadShoppingList();
 
@@ -101,7 +101,7 @@ export default class App extends Component {
     createShoppingList = async (args = {}) => {
 
         let title = args.title;
-        let author = args.author;
+        let author = args.author || "OV";
         let milk = args.milk || 0;
         let eggs = args.eggs || 0;
         let water = args.water || 0;
@@ -128,7 +128,7 @@ export default class App extends Component {
             });
 
         } catch (error) {
-            alert(error);
+            this.setState({ page: "CREATE", viewShoppingListID: 0, updateShoppingListID: 0, error: error });
         }
 
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Text, ScrollView, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
-import { capitaliseString, convertJSToUserDate} from "../Helper";
+import { capitaliseString } from "../Helper";
 
 export default class ViewShoppingList extends Component {
 
