@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
     TouchableOpacity,
-    StyleSheet,
     Text,
     View,
     ScrollView,
@@ -9,20 +8,13 @@ import {
     Alert,
     Image
 } from 'react-native';
-import { API_ENDPOINT } from './Helper';
+import { API_ENDPOINT, getShoppingListItemsArray } from './Helper';
 import CreateShoppingList from './components/CreateShoppingList';
 import LoginForm from './components/LoginForm';
 import ViewShoppingList from "./components/ViewShoppingList";
 import UpdateShoppingList from "./components/UpdateShoppingList";
 import axios from "axios";
-import {
-    getVeggiesAndFruitsArray,
-    getDrinksArray,
-    getDairyProductsArray,
-    getMeatArray,
-    getBakeryProductsArray,
-    getBasicProductsArray, getHomeProductsArray, getExtraProductsArray
-} from './Helper';
+import styles from './styles/AppStyles';
 
 export default class App extends Component {
 
@@ -43,7 +35,7 @@ export default class App extends Component {
 
       await this.loadShoppingList();
 
-    }
+    };
 
     loadShoppingList = async () => {
         try {
@@ -61,11 +53,11 @@ export default class App extends Component {
         } catch (error) {
             this.setState({ viewShoppingListID: 0, loggedIn: false, loginErrorMsg: true });
         }
-    }
+    };
 
     loadCreateForm = () => {
         this.setState({ page: "CREATE" });
-    }
+    };
 
     login = async (args = {}) => {
         let email = (args && args.email) ? args.email : "";
@@ -96,24 +88,24 @@ export default class App extends Component {
             this.setState({ viewShoppingListID: 0, loggedIn: false, loginErrorMsg: true });
 
         }
-    }
+    };
 
     logout = async () => {
         await AsyncStorage.setItem('token', "");
         this.setState({ viewShoppingListID: 0, loggedIn: false, updateShoppingListID: 0 });
-    }
+    };
 
     viewShoppingListItem = (_id) => {
         this.setState({ page : "VIEW", viewShoppingListID: _id });
-    }
+    };
 
     loadUpdateShoppingListForm = (_id) => {
         this.setState({ page: "UPDATE", viewShoppingListID: 0, updateShoppingListID: _id });
-    }
+    };
 
     backToHome = () => {
         this.setState({ page: "HOME", viewShoppingListID: 0, updateShoppingListID: 0 });
-    }
+    };
 
     createShoppingList = async (args = {}) => {
 
@@ -122,64 +114,8 @@ export default class App extends Component {
         let title = args.title;
         let author = args.author || "OV";
 
-        const veggiesAndFruitsArray = getVeggiesAndFruitsArray();
-        Object.keys(veggiesAndFruitsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || "0";
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const drinkProductsArray = getDrinksArray();
-        Object.keys(drinkProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || "0";
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const dairyProductsArray = getDairyProductsArray();
-        Object.keys(dairyProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || "0";
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const meatProductsArray = getMeatArray();
-        Object.keys(meatProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || "0";
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const bakeryProductsArray = getBakeryProductsArray();
-        Object.keys(bakeryProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || "0";
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const basicProductsArray = getBasicProductsArray();
-        Object.keys(basicProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || "0";
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const homeProductsArray = getHomeProductsArray();
-        Object.keys(homeProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || "0";
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const extraProductsArray = getExtraProductsArray();
-        Object.keys(extraProductsArray).map(key => {
+        const shoppingListItemsArray = getShoppingListItemsArray();
+        Object.keys(shoppingListItemsArray).map(key => {
             let stringKey = key.toString();
 
             let itemValue = args[stringKey] || "0";
@@ -220,64 +156,8 @@ export default class App extends Component {
         let title = (args && args.title) ? args.title : shoppingListItem.title;
         let author =  (args && args.author) ? args.author : shoppingListItem.author;
 
-        const veggiesAndFruitsArray = getVeggiesAndFruitsArray();
-        Object.keys(veggiesAndFruitsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const drinkProductsArray = getDrinksArray();
-        Object.keys(drinkProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const dairyProductsArray = getDairyProductsArray();
-        Object.keys(dairyProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const meatProductsArray = getMeatArray();
-        Object.keys(meatProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const bakeryProductsArray = getBakeryProductsArray();
-        Object.keys(bakeryProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const basicProductsArray = getBasicProductsArray();
-        Object.keys(basicProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const homeProductsArray = getHomeProductsArray();
-        Object.keys(homeProductsArray).map(key => {
-            let stringKey = key.toString();
-
-            let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
-            shoppingListItemsMap.set(stringKey, itemValue);
-        });
-
-        const extraProductsArray = getExtraProductsArray();
-        Object.keys(extraProductsArray).map(key => {
+        const shoppingListItemsArray = getShoppingListItemsArray();
+        Object.keys(shoppingListItemsArray).map(key => {
             let stringKey = key.toString();
 
             let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
@@ -403,56 +283,3 @@ export default class App extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 75
-    },
-    title: {
-        fontSize: 32,
-        fontWeight: "bold",
-        marginBottom: 40,
-        marginTop:20
-    },
-    shoppingListItem : {
-        padding: 10,
-        backgroundColor: '#ffa500',
-        margin: 10,
-        width: 300,
-        height: 50,
-        textAlign: 'center',
-        paddingTop: 15,
-        fontSize: 16
-    },
-    addShoppingListButtonView: {
-        width:300,
-        height:50,
-        marginBottom: 25,
-        backgroundColor: '#3fa9a1',
-        padding: 10,
-        color: '#fff',
-        textAlign: 'center'
-    },
-    addShoppingListButtonText: {
-        color: '#fff',
-        textAlign: 'center',
-        paddingTop: 5,
-        fontWeight: "bold",
-        fontSize: 16,
-    },
-    loginButtonView: {
-        width:300,
-        height:50,
-        marginBottom: 25,
-        backgroundColor: '#312784',
-        padding: 10,
-        color: '#fff',
-        textAlign: 'center'
-    }, imageStyle: {
-        marginBottom:20
-    }
-});

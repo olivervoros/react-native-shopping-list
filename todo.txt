@@ -1,0 +1,8 @@
+- Deal with style duplications
+- Add unit testing / jest
+- Shopping list should belong to a user, and a user should only see it's own list
+- Add redux
+- Add test user for demo
+- use https for the api
+- translation
+- longer token life
