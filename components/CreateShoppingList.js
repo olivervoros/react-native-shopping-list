@@ -3,6 +3,7 @@ import { TextInput, View, TouchableOpacity, Text, Image } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { getShoppingListItemsArray } from "../Helper";
 import styles from '../styles/Styles';
+import { shoppingListImage } from '../assets/index';
 
 export default class CreateShoppingList extends Component {
 
@@ -43,8 +44,8 @@ export default class CreateShoppingList extends Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Create New Shopping List</Text>
                 <Image
-                    style={{width: 300, height: 200, marginBottom: 20}}
-                    source={require('../shoppinglist.jpg')}
+                    style={ styles.image }
+                    source={ shoppingListImage }
                 />
                 <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
                 <View style={{ marginBottom:25 }}>

@@ -251,6 +251,14 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "left",
         marginBottom: 15
+    },
+    image: {
+        width: 300,
+        height: 200,
+        marginBottom: 20
+    },
+    mb25: {
+        marginBottom:25
     }
 });
 

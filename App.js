@@ -15,6 +15,7 @@ import ViewShoppingList from "./components/ViewShoppingList";
 import UpdateShoppingList from "./components/UpdateShoppingList";
 import axios from "axios";
 import styles from './styles/Styles';
+import { supermarketImage } from './assets/index';
 
 export default class App extends Component {
 
@@ -127,9 +128,6 @@ export default class App extends Component {
 
         let items = Object.fromEntries(shoppingListItemsMap);
 
-        console.log("CREATE");
-        console.log(items);
-
         const userId = await AsyncStorage.getItem('userId');
         let payload = {title: title, author: author, userId: userId, items: items};
 
@@ -138,7 +136,6 @@ export default class App extends Component {
             let newShoppingListItem = await axios.post(
                 API_ENDPOINT+"/shoppinglists", payload, { headers: {"x-access-token" : token }}
             );
-            // You're dispatching not only the metadata, but also setting isDataInitialized to true, to denote, that data has been loaded
 
             this.setState({
                 shoppingLists: [newShoppingListItem.data, ...this.state.shoppingLists],
@@ -168,8 +165,6 @@ export default class App extends Component {
         });
 
         let items = Object.fromEntries(shoppingListItemsMap);
-        console.log("UPDATE");
-        console.log(items);
 
         let userId = await AsyncStorage.getItem('userId');
         let payload = {title: title, author: author, userId: userId, date: shoppingListItem.date, items: items};
@@ -266,8 +261,8 @@ export default class App extends Component {
             <View style={styles.container}>
                 <Text style={styles.appTitle}>Shopping List App</Text>
                 <Image
-                    style={{width: 300, height: 200, marginBottom: 20}}
-                    source={require('./supermarket.jpg')}
+                    style={ styles.image }
+                    source={ supermarketImage }
                 />
                 <TouchableOpacity style={styles.addShoppingListButtonView} onPress={this.loadCreateForm}>
                     <Text style={styles.addShoppingListButtonText}>CREATE NEW SHOPPING LIST</Text>

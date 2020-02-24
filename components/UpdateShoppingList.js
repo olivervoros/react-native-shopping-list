@@ -3,6 +3,7 @@ import {Text, View, TouchableOpacity, TextInput, Image} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { getShoppingListItemsArray } from "../Helper";
 import styles from '../styles/Styles';
+import { viewImage } from '../assets/index';
 
 export default class UpdateShoppingList extends Component {
 
@@ -27,14 +28,14 @@ export default class UpdateShoppingList extends Component {
         });
 
         return(
-            <KeyboardAwareScrollView ontentContainerStyle={{ flexGrow: 1 }} enableOnAndroid={true}>
+            <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }} enableOnAndroid={true}>
             <View style={styles.container}>
                 <Text style={styles.title}>Update Shopping List</Text>
                 <Image
-                    style={{width: 300, height: 200, marginBottom: 20}}
-                    source={require('../view.jpg')}
+                    style={ styles.image }
+                    source={ viewImage }
                 />
-                <View style={{ marginBottom:25 }}>
+                <View style={ styles.mb25 }>
                     <Text style={styles.updateShoppingListItemText}>Shopping List Title:</Text>
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" defaultValue={shoppingListItem.title}/>
                     <Text style={styles.updateShoppingListItemText}>Author:</Text>
