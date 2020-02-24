@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Text, ScrollView, TouchableOpacity, View, Image} from 'react-native';
 import { capitaliseString } from "../Helper";
-import styles from '../styles/ViewStyles';
+import styles from '../styles/Styles';
 
 export default class ViewShoppingList extends Component {
 
@@ -49,7 +49,7 @@ export default class ViewShoppingList extends Component {
                     style={{width: 300, height: 200, marginBottom: 20}}
                     source={require('../update.jpg')}
                 />
-                <Text style={styles.title}>{ shoppingListItem.title }</Text>
+                <Text style={styles.viewTitle}>{ shoppingListItem.title }</Text>
                 <Text>(Click on the item when it is found...)</Text>
                 { shoppingItems }
                 <TouchableOpacity onPress={backToHome}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>

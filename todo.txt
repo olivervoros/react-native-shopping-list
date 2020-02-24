@@ -5,4 +5,4 @@
 - Add test user for demo
 - use https for the api
 - translation
-- longer token life
+- asyncstorage expiry longer token life

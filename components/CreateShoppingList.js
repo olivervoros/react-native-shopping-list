@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TextInput, View, TouchableOpacity, Text, Image } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { getShoppingListItemsArray } from "../Helper";
-import styles from '../styles/CreateStyles';
+import styles from '../styles/Styles';
 
 export default class CreateShoppingList extends Component {
 
@@ -33,7 +33,7 @@ export default class CreateShoppingList extends Component {
         const  shoppingListItems = Object.keys(shoppingListItemsArray).map(key => {
             let stringKey = key.toString();
             return <View key={key}>
-                <Text style={styles.shoppingListItemText}>{shoppingListItemsArray[key]}:</Text>
+                <Text style={styles.createShoppingListItemText}>{shoppingListItemsArray[key]}:</Text>
                 <TextInput style={styles.createShoppingListTextInput} onChangeText={(key) => this.setState({[stringKey] : key})} name={key} />
             </View>
         });
@@ -46,10 +46,11 @@ export default class CreateShoppingList extends Component {
                     style={{width: 300, height: 200, marginBottom: 20}}
                     source={require('../shoppinglist.jpg')}
                 />
+                <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
                 <View style={{ marginBottom:25 }}>
-                    <Text style={styles.shoppingListItemText}>Shopping List Title:</Text>
+                    <Text style={styles.createShoppingListItemText}>Shopping List Title:</Text>
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" />
-                    <Text style={styles.shoppingListItemText}>Author:</Text>
+                    <Text style={styles.createShoppingListItemText}>Author:</Text>
                     <TextInput style={styles.createShoppingListTextInput}  onChangeText={(author) => this.setState({author : author})} name="author" />
                     <Text style={styles.subTitle}>Shopping List Items:</Text>
                     { shoppingListItems }

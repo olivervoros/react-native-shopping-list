@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Text, View, TouchableOpacity, TextInput, Image} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { getShoppingListItemsArray } from "../Helper";
-import styles from '../styles/UpdateStyles';
+import styles from '../styles/Styles';
 
 export default class UpdateShoppingList extends Component {
 
@@ -21,7 +21,7 @@ export default class UpdateShoppingList extends Component {
             let stringKey = key.toString();
             let defaultValue = shoppingListItem.items[stringKey] ? shoppingListItem.items[stringKey].toString() : "0";
             return <View key={key}>
-                <Text style={styles.shoppingListItemText}>{shoppingListItemsArray[key]}:</Text>
+                <Text style={styles.updateShoppingListItemText}>{shoppingListItemsArray[key]}:</Text>
                 <TextInput style={styles.createShoppingListTextInput} onChangeText={(key) => this.setState({[stringKey] : key})} name={key} defaultValue={defaultValue}/>
             </View>
         });
@@ -35,9 +35,9 @@ export default class UpdateShoppingList extends Component {
                     source={require('../view.jpg')}
                 />
                 <View style={{ marginBottom:25 }}>
-                    <Text style={styles.shoppingListItemText}>Shopping List Title:</Text>
+                    <Text style={styles.updateShoppingListItemText}>Shopping List Title:</Text>
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" defaultValue={shoppingListItem.title}/>
-                    <Text style={styles.shoppingListItemText}>Author:</Text>
+                    <Text style={styles.updateShoppingListItemText}>Author:</Text>
                     <TextInput style={styles.createShoppingListTextInput} onChangeText={(author) => this.setState({author : author})} name="author" defaultValue={shoppingListItem.author} />
                     <Text style={styles.subTitle}>Shopping List Items:</Text>
                     { shoppingListItems }

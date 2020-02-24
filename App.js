@@ -14,7 +14,7 @@ import LoginForm from './components/LoginForm';
 import ViewShoppingList from "./components/ViewShoppingList";
 import UpdateShoppingList from "./components/UpdateShoppingList";
 import axios from "axios";
-import styles from './styles/AppStyles';
+import styles from './styles/Styles';
 
 export default class App extends Component {
 
@@ -40,10 +40,11 @@ export default class App extends Component {
     loadShoppingList = async () => {
         try {
             const token = await AsyncStorage.getItem('token');
+            const userId = await AsyncStorage.getItem('userId');
             if (token !== null) {
 
                 let shoppingLists = await axios.get(
-                    API_ENDPOINT+"/shoppinglists", { headers: {"x-access-token" : token}}
+                    API_ENDPOINT+"/shoppinglists/"+userId, { headers: {"x-access-token" : token}}
                 );
 
                 // You're dispatching not only the metadata, but also setting isDataInitialized to true, to denote, that data has been loaded
@@ -60,10 +61,10 @@ export default class App extends Component {
     };
 
     login = async (args = {}) => {
-        let email = (args && args.email) ? args.email : "";
+        let household = (args && args.household) ? args.household : "";
         let password = (args && args.password) ? args.password : "";
 
-        let payload = {email: email, password: password};
+        let payload = {household: household, password: password};
 
         try {
             let res = await axios.post(API_ENDPOINT+"/login", payload);
@@ -72,8 +73,9 @@ export default class App extends Component {
             if(res && res.data.auth===true) {
 
                 try {
-                    let token = res.data.token;
-                    await AsyncStorage.setItem('token', token);
+                    await AsyncStorage.setItem('token', res.data.token);
+                    await AsyncStorage.setItem('userId', res.data.userId);
+
                     this.setState({ viewShoppingListID: 0, loggedIn: true, loginErrorMsg: false });
                 } catch (error) {
                     this.setState({ viewShoppingListID: 0, loggedIn: false, loginErrorMsg: true });
@@ -92,6 +94,7 @@ export default class App extends Component {
 
     logout = async () => {
         await AsyncStorage.setItem('token', "");
+        await AsyncStorage.setItem('userId', "");
         this.setState({ viewShoppingListID: 0, loggedIn: false, updateShoppingListID: 0 });
     };
 
@@ -127,11 +130,11 @@ export default class App extends Component {
         console.log("CREATE");
         console.log(items);
 
-        let payload = {title: title, author: author, items: items};
+        const userId = await AsyncStorage.getItem('userId');
+        let payload = {title: title, author: author, userId: userId, items: items};
 
         try {
             let token = await AsyncStorage.getItem('token');
-
             let newShoppingListItem = await axios.post(
                 API_ENDPOINT+"/shoppinglists", payload, { headers: {"x-access-token" : token }}
             );
@@ -168,8 +171,8 @@ export default class App extends Component {
         console.log("UPDATE");
         console.log(items);
 
-
-        let payload = {title: title, author: author, date: shoppingListItem.date, items: items};
+        let userId = await AsyncStorage.getItem('userId');
+        let payload = {title: title, author: author, userId: userId, date: shoppingListItem.date, items: items};
 
         try {
 
@@ -261,7 +264,7 @@ export default class App extends Component {
         return (
             <ScrollView>
             <View style={styles.container}>
-                <Text style={styles.title}>Shopping List App</Text>
+                <Text style={styles.appTitle}>Shopping List App</Text>
                 <Image
                     style={{width: 300, height: 200, marginBottom: 20}}
                     source={require('./supermarket.jpg')}
@@ -269,13 +272,13 @@ export default class App extends Component {
                 <TouchableOpacity style={styles.addShoppingListButtonView} onPress={this.loadCreateForm}>
                     <Text style={styles.addShoppingListButtonText}>CREATE NEW SHOPPING LIST</Text>
                 </TouchableOpacity>
-                <Text style={styles.title}>View Shopping Lists:</Text>
+                <Text style={styles.appTitle}>View Shopping Lists:</Text>
                 {this.state.shoppingLists.map((shoppingList, i) =>
                     <TouchableOpacity key={shoppingList._id} onPress={() => this.viewShoppingListItem(shoppingList._id)}>
                         <Text style={styles.shoppingListItem} key={shoppingList._id}>{shoppingList.title}</Text>
                     </TouchableOpacity>
                 )}
-                <View style={styles.loginButtonView}>
+                <View style={styles.appButtonView}>
                     {this.state.loggedIn ? logoutButton : loginButton}
                 </View>
             </View>
