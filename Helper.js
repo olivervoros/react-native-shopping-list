@@ -1,6 +1,6 @@
 import React from "react";
 
-export const API_ENDPOINT = 'http://api.sancusprojects.com:3000/api';
+export const API_ENDPOINT = 'https://api.sancusprojects.com/api';
 
 export function capitaliseString(string) {
     string = string.replace(/_/g, ' ');
