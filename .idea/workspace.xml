@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e72c7f9-5be7-4762-8c7a-d5beb907cf44" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/components/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/actions/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/reducers/shoppinglistreducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/Helper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +35,6 @@
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="22" />
-    <option name="y" value="44" />
-    <option name="width" value="1400" />
-    <option name="height" value="790" />
   </component>
   <component name="ProjectId" id="1YDxqxvvyKIxq3gmjFZsV6BhG4x" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -117,6 +116,34 @@
       <workItem from="1582551936945" duration="110000" />
       <workItem from="1582552109305" duration="4033000" />
       <workItem from="1582578984998" duration="33000" />
+      <workItem from="1582652123952" duration="120000" />
+      <workItem from="1582652273613" duration="11000" />
+      <workItem from="1582652306996" duration="93000" />
+      <workItem from="1582652502991" duration="47000" />
+      <workItem from="1582652573998" duration="39000" />
+      <workItem from="1582652628781" duration="136000" />
+      <workItem from="1582652811556" duration="264000" />
+      <workItem from="1582653104175" duration="323000" />
+      <workItem from="1582653458829" duration="2220000" />
+      <workItem from="1582657022825" duration="69000" />
+      <workItem from="1582657109014" duration="649000" />
+      <workItem from="1582657775158" duration="516000" />
+      <workItem from="1582660865366" duration="629000" />
+      <workItem from="1582661679542" duration="25000" />
+      <workItem from="1582661725477" duration="504000" />
+      <workItem from="1582742226916" duration="57000" />
+      <workItem from="1582742309242" duration="2366000" />
+      <workItem from="1582747902157" duration="216000" />
+      <workItem from="1582748164311" duration="93000" />
+      <workItem from="1582748268837" duration="930000" />
+      <workItem from="1582749267470" duration="50000" />
+      <workItem from="1582749341364" duration="310000" />
+      <workItem from="1582882385856" duration="236000" />
+      <workItem from="1582887530098" duration="27000" />
+      <workItem from="1582887584688" duration="30000" />
+      <workItem from="1582887649198" duration="248000" />
+      <workItem from="1582888208707" duration="603000" />
+      <workItem from="1582889123408" duration="482000" />
     </task>
     <servers />
   </component>
