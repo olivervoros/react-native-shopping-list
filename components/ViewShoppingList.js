@@ -44,18 +44,18 @@ export default class ViewShoppingList extends Component {
 
         return(
             <ScrollView>
-            <View style={styles.container}>
+            <View style={[styles.container, styles.mt75]}>
                 <Text style={styles.shoppingListItemText}>View Shopping List</Text>
                 <Image
                     style={ styles.image }
                     source={ updateImage }
                 />
-                <Text style={styles.viewTitle}>{ shoppingListItem.title }</Text>
+                <Text style={styles.title}>{ shoppingListItem.title }</Text>
                 <Text>(Click on the item when it is found...)</Text>
                 { shoppingItems }
-                <TouchableOpacity onPress={backToHome}><Text style={styles.addShoppingListButtonView1}>Back to Home</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => loadUpdateShoppingListForm(shoppingListItem._id)}><Text style={styles.addShoppingListButtonView2}>Update Shopping List</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => confirmDeleteAlert(shoppingListItem._id)}><Text style={styles.deleteButtonView}>Delete Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToHome}><Text style={[styles.button, styles.mt75, styles.bcOrange]}>Back to Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => loadUpdateShoppingListForm(shoppingListItem._id)}><Text style={[styles.button, styles.bcLightBlue]}>Update Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => confirmDeleteAlert(shoppingListItem._id)}><Text style={[styles.button, styles.bcRed]}>Delete Shopping List</Text></TouchableOpacity>
             </View>
             </ScrollView>
 

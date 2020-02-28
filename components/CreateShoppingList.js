@@ -28,37 +28,37 @@ export default class CreateShoppingList extends Component {
         const { backToHome, createShoppingList} = this.props;
 
         const  missingTitleError = this.state.missingTitleError;
-        const errorMessage = <Text style={styles.missingTitleErrorMessage}>You need to add a shopping list title!</Text>;
+        const errorMessage = <Text style={styles.errorMessage}>You need to add a shopping list title!</Text>;
 
         const shoppingListItemsArray = getShoppingListItemsArray();
         const  shoppingListItems = Object.keys(shoppingListItemsArray).map(key => {
             let stringKey = key.toString();
             return <View key={key}>
                 <Text style={styles.createShoppingListItemText}>{shoppingListItemsArray[key]}:</Text>
-                <TextInput style={styles.createShoppingListTextInput} onChangeText={(key) => this.setState({[stringKey] : key})} name={key} />
+                <TextInput style={[styles.createShoppingListStyle, styles.h40]} onChangeText={(key) => this.setState({[stringKey] : key})} name={key} />
             </View>
         });
 
         return(
             <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }} enableOnAndroid={true}>
-            <View style={styles.container}>
+            <View style={[styles.container, styles.mt75]}>
                 <Text style={styles.title}>Create New Shopping List</Text>
                 <Image
                     style={ styles.image }
                     source={ shoppingListImage }
                 />
-                <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToHome}><Text style={[styles.button, styles.bcOrange]}>Back to Home</Text></TouchableOpacity>
                 <View style={{ marginBottom:25 }}>
                     <Text style={styles.createShoppingListItemText}>Shopping List Title:</Text>
-                    <TextInput style={styles.createShoppingListTextInput} onChangeText={(title) => this.setState({title: title})} name="title" />
+                    <TextInput style={[styles.createShoppingListStyle, styles.h40]} onChangeText={(title) => this.setState({title: title})} name="title" />
                     <Text style={styles.createShoppingListItemText}>Author:</Text>
-                    <TextInput style={styles.createShoppingListTextInput}  onChangeText={(author) => this.setState({author : author})} name="author" />
+                    <TextInput style={[styles.createShoppingListStyle, styles.h40]}  onChangeText={(author) => this.setState({author : author})} name="author" />
                     <Text style={styles.subTitle}>Shopping List Items:</Text>
                     { shoppingListItems }
                     { missingTitleError ? errorMessage : <Text></Text>}
                 </View>
-                <TouchableOpacity onPress={() => this.validateForm(this.state, createShoppingList)}><Text style={styles.addShoppingListButton}>Create Shopping List</Text></TouchableOpacity>
-                <TouchableOpacity onPress={backToHome}><Text style={styles.backToHomeButton}>Back to Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => this.validateForm(this.state, createShoppingList)}><Text style={[styles.button, styles.bcLightBlue]}>Create Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={backToHome}><Text style={[styles.button, styles.bcOrange]}>Back to Home</Text></TouchableOpacity>
             </View>
             </KeyboardAwareScrollView>
 

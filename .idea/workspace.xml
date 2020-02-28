@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e72c7f9-5be7-4762-8c7a-d5beb907cf44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/actions/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/reducers/shoppinglistreducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CreateShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CreateShoppingList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/UpdateShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/UpdateShoppingList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ViewShoppingList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ViewShoppingList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Styles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +143,7 @@
       <workItem from="1582887584688" duration="30000" />
       <workItem from="1582887649198" duration="248000" />
       <workItem from="1582888208707" duration="603000" />
-      <workItem from="1582889123408" duration="482000" />
+      <workItem from="1582889123408" duration="3646000" />
     </task>
     <servers />
   </component>
@@ -155,5 +155,9 @@
       <screen x="0" y="23" width="1440" height="829" />
     </state>
     <state x="458" y="191" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.829@0.23.1440.829" timestamp="1582572448564" />
+    <state x="386" y="194" width="667" height="486" key="find.popup" timestamp="1582897492225">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="386" y="194" width="667" height="486" key="find.popup/0.23.1440.829@0.23.1440.829" timestamp="1582897492225" />
   </component>
 </project>

@@ -12,16 +12,16 @@ export default class CreateShoppingList extends Component {
 
         const { login, loginErrorMsg } = this.props;
 
-        const errorMessage = <Text style={styles.loginErrorMessage}>Invalid household name or password!</Text>;
+        const errorMessage = <Text style={styles.errorMessage}>Invalid household name or password!</Text>;
 
         return(
-            <View style={styles.loginContainer}>
-                <Text style={styles.loginTitle}>Welcome to the Shopping List App!</Text>
+            <View style={styles.container}>
+                <Text style={styles.title}>Welcome to the Shopping List App!</Text>
                 { loginErrorMsg ? errorMessage : <Text></Text>}
-                <TextInput onChangeText={(household) => this.setState({household: household})} placeholder="Household" style={styles.textInputStyle} />
-                <TextInput secureTextEntry={true} onChangeText={(password) => this.setState({password: password})} placeholder="Password" style={styles.textInputStyle} />
+                <TextInput onChangeText={(household) => this.setState({household: household})} placeholder="Household" style={[styles.createShoppingListStyle, styles.h40]} />
+                <TextInput secureTextEntry={true} onChangeText={(password) => this.setState({password: password})} placeholder="Password" style={[styles.createShoppingListStyle, styles.h40]} />
                 <TouchableOpacity onPress={() => login(this.state)}>
-                <Text style={styles.loginButtonView}>LOGIN</Text>
+                <Text style={[styles.button, styles.bcDarkblue]}>LOGIN</Text>
                 </TouchableOpacity>
             </View>
         )

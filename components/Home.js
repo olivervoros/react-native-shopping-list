@@ -74,22 +74,22 @@ class Home extends Component {
 
         return (
                 <ScrollView>
-                    <View style={styles.container}>
-                        <Text style={styles.appTitle}>Shopping List App</Text>
+                    <View style={[styles.container, styles.mt75]}>
+                        <Text style={styles.title}>Shopping List App</Text>
                         <Image
                             style={ styles.image }
                             source={ supermarketImage }
                         />
-                        <TouchableOpacity style={styles.addShoppingListButtonView} onPress={this.props.loadCreateForm}>
+                        <TouchableOpacity style={[styles.button, styles.bcLightBlue]} onPress={this.props.loadCreateForm}>
                             <Text style={styles.addShoppingListButtonText}>CREATE NEW SHOPPING LIST</Text>
                         </TouchableOpacity>
-                        <Text style={styles.appTitle}>View Shopping Lists:</Text>
+                        <Text style={styles.title}>View Shopping Lists:</Text>
                         {this.props.shoppingLists.map((shoppingList, i) =>
                             <TouchableOpacity key={shoppingList._id} onPress={() => this.props.viewShoppingListItem(shoppingList._id)}>
                                 <Text style={styles.shoppingListItem} key={shoppingList._id}>{shoppingList.title}</Text>
                             </TouchableOpacity>
                         )}
-                        <View style={styles.appButtonView}>
+                        <View style={[styles.button, styles.bcDarkblue]}>
                             {this.props.loggedIn ? logoutButton : loginButton}
                         </View>
                     </View>
