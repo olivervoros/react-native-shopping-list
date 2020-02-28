@@ -57,7 +57,7 @@ class Home extends Component {
 
 
         if( this.props.page==="VIEW") {
-            return <ViewShoppingList backToHome={this.props.backToHome} confirmDeleteAlert={this.confirmDeleteAlert} loadUpdateShoppingListForm={this.props.loadCreateForm} shoppingLists={this.props.shoppingLists} viewShoppingListID={this.props.viewShoppingListID}></ViewShoppingList>
+            return <ViewShoppingList backToHome={this.props.backToHome} confirmDeleteAlert={this.confirmDeleteAlert} loadUpdateForm={this.props.loadUpdateForm} shoppingLists={this.props.shoppingLists} viewShoppingListID={this.props.viewShoppingListID}></ViewShoppingList>
         }
 
         if (this.props.page==="UPDATE") {

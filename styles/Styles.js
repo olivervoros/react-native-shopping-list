@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         paddingTop: 5,
+        paddingBottom: 5,
         fontWeight: "bold",
         fontSize: 16,
     },
@@ -122,6 +123,9 @@ const styles = StyleSheet.create({
     },
     h120: {
         height: 120
+    },
+    font20: {
+        fontSize: 20
     }
 
 });

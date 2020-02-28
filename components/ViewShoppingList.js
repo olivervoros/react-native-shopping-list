@@ -28,7 +28,7 @@ export default class ViewShoppingList extends Component {
 
     render() {
 
-        const { shoppingLists, viewShoppingListID, backToHome, loadUpdateShoppingListForm, confirmDeleteAlert } = this.props;
+        const { shoppingLists, viewShoppingListID, backToHome, loadUpdateForm, confirmDeleteAlert } = this.props;
 
         const shoppingListItem = shoppingLists.find(item => item._id === viewShoppingListID);
 
@@ -54,7 +54,7 @@ export default class ViewShoppingList extends Component {
                 <Text>(Click on the item when it is found...)</Text>
                 { shoppingItems }
                 <TouchableOpacity onPress={backToHome}><Text style={[styles.button, styles.mt75, styles.bcOrange]}>Back to Home</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => loadUpdateShoppingListForm(shoppingListItem._id)}><Text style={[styles.button, styles.bcLightBlue]}>Update Shopping List</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() =>loadUpdateForm(shoppingListItem._id)}><Text style={[styles.button, styles.bcLightBlue]}>Update Shopping List</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => confirmDeleteAlert(shoppingListItem._id)}><Text style={[styles.button, styles.bcRed]}>Delete Shopping List</Text></TouchableOpacity>
             </View>
             </ScrollView>

@@ -50,7 +50,6 @@ const reducer = (state = initialState, action) => {
     }
 
     if(action.type==='LOAD_CREATE_FORM') {
-        console.log("works!");
         newState.page = "CREATE";
     }
 

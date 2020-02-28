@@ -16,7 +16,7 @@ export default class CreateShoppingList extends Component {
 
         return(
             <View style={styles.container}>
-                <Text style={styles.title}>Welcome to the Shopping List App!</Text>
+                <Text style={[styles.title, styles.font20]}>Welcome to the Shopping List App!</Text>
                 { loginErrorMsg ? errorMessage : <Text></Text>}
                 <TextInput onChangeText={(household) => this.setState({household: household})} placeholder="Household" style={[styles.createShoppingListStyle, styles.h40]} />
                 <TextInput secureTextEntry={true} onChangeText={(password) => this.setState({password: password})} placeholder="Password" style={[styles.createShoppingListStyle, styles.h40]} />

@@ -102,21 +102,11 @@ export const updateShoppingList = (updateShoppingListID, shoppingListItem, args)
     let title = (args && args.title) ? args.title : shoppingListItem.title;
     let author =  (args && args.author) ? args.author : shoppingListItem.author;
 
-    /*
-   const shoppingListItemsArray = getShoppingListItemsArray();
-   Object.keys(shoppingListItemsArray).map(key => {
-       let stringKey = key.toString();
-
-       let itemValue = args[stringKey] || shoppingListItem.items[stringKey].toString();
-       shoppingListItemsMap.set(stringKey, itemValue);
-   });
-    */
-
    const productsArray = getShoppingListItemsArray();
    Object.keys(productsArray).map(key => {
 
        let oldValue = shoppingListItem.items[key];
-       let newValue = args[key];
+       let newValue = (args[key]==="") ? "0" : args[key];
 
        if(newValue) {
            shoppingListItemsMap.set(key.toString(), newValue);
